@@ -106,3 +106,52 @@ int main()
     printf("%d", num); /8 // error: assignment of read-only variable 'num'
 }
 ```
+
+# Getting user input 🔠 
+
+## Scanf()
+
+Meminta input dari user menggunakan function `scanf()`.
+
+### Angka
+
+```c
+int main()
+{
+    int usia;
+    printf("Masukkan usia anda :");
+    scanf("%d", &usia);
+    printf("Usia anda %d adalah", usia)
+    return 0;
+}
+```
+
+### String
+
+```c
+int main()
+{
+    char nama[5];
+    printf("Masukkan nama anda : \n");
+    scanf("Nama anda adalah %s", nama);
+    printf("Nama anda adalah %s", nama);
+    return 0;
+}
+```
+
+> Kita bisa gunakan function `scanf()` untuk memperoleh data dari user, tetapi hanya terbatas pada karakter string pertama. Jika sebuah string terpisahkan dengan spasi maka itu dianggap terpisah.
+
+## fgets
+
+`fgets()` akan mengambil seluruh string yang ada di suatu inputan
+
+```c
+int main()
+{
+    char nama[10];
+    printf("Masukkan nama anda : \n");
+    fgets(nama, 10, stdin);
+    printf("Nama anda adalah %s", nama);
+    return 0;
+}
+```

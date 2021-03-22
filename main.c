@@ -53,11 +53,35 @@
 
 // ----- Constant -----
 
+// int main()
+// {
+//     const int FAV_NUM = 5; // Biasanya variable di tulis dengan huruf besar.
+//     printf("%d\n", num);
+//     num = 8;
+//     printf("%d", num);
+// }
+
+
+// ----- Getting user input -----
+/* --- scanf() --- */
+// int main()
+// {
+//     int usia;
+//     printf("Masukkan usia anda :");
+//     scanf("%d", &usia);
+//     printf("Usia anda %d adalah", usia);
+//     return 0;
+// }
+
+/* --- fgets() --- */
 int main()
 {
-    const int FAV_NUM = 5; // Biasanya variable di tulis dengan huruf besar.
-    printf("%d\n", num);
-    num = 8;
-    printf("%d", num);
+    char nama[10];
+    printf("Masukkan nama anda : \n");
+    fgets(nama, 10, stdin);
+    printf("Nama anda adalah %s", nama);
+    return 0;
 }
+
+
 
