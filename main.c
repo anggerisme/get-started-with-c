@@ -97,14 +97,40 @@
 //     return 0;
 // }
 
+// int main()
+// {
+//     double num1;
+//     double num2;
+//     printf("Masukkan angka 1:\n");
+//     scanf("%lf", &num1);
+//     printf("Masukkan angka 2:\n");
+//     scanf("%lf", &num2);
+//     printf("Hasilnya adalah %lf" ,num1 + num2);
+//     return 0;
+// }
+
+// ----- Arrays -----
+
+// int main() {int number[] = {2, 4, 8, 16, 32, 64};
+//     printf("No : %d", number[0]); //2
+//     return 0;
+// }
+/* Reassigning value*/
+// int main() {int number[] = {2, 4, 8, 16, 32, 64};
+//     number[0] = 10;
+//     printf("No : %d", number[0]); //2
+//     return 0;
+// }
+
+/* Reassigning value di akhir*/
 int main()
 {
-    double num1;
-    double num2;
-    printf("Masukkan angka 1:\n");
-    scanf("%lf", &num1);
-    printf("Masukkan angka 2:\n");
-    scanf("%lf", &num2);
-    printf("Hasilnya adalah %lf" ,num1 + num2);
+    int number[4];
+    number[0] = 10;
+    number[2] = 12;
+    number[3] = 14;
+    number[4] = 16;
+    number[5] = 19;
+    printf("No : %d & %d & %d & %d & %d", number[0], number[2], number[3], number[4], number[5]); //2
     return 0;
 }

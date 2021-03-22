@@ -190,3 +190,42 @@ int main()
 }
 ```
 
+# Arrays 🅰️
+
+Kumpulan nilai dalam satu variable
+
+```c
+int main()
+{
+    int number[] = {2,4,6,8,10,12,14};
+    printf("No : %d", number[]);
+    return 0;
+}
+```
+
+Reassigning value :
+
+```c
+int main()
+{
+    int number[] = {2, 4, 8, 16, 32, 64};
+    number[0] = 10;
+    printf("No : %d", number[0]); //2
+    return 0;
+}
+```
+
+Reassigning value di akhir
+
+```c
+int main()
+{
+    int number[3];
+    number[0] = 10;
+    number[2] = 12;
+    printf("No : %d", number[0], number[2]); //2
+    return 0;
+}
+```
+
+> Jumlah nilai yang dapat ditambahkan di dalamnya adalah 3+1 dari jumlah yang ditentukan di parameter arrays
