@@ -21,7 +21,7 @@
 //     return 0;
 // }
 
-// Variable & Tipe Data
+// ----- Variable & Tipe Data -----
 
 int main()
 {
@@ -30,20 +30,24 @@ int main()
     char nama2[] = "Andi";
     float ipk = 3.7532f;
     double phi = 3.14159265358979323846;
+    printf("%d\n", 8.0/ 5);
+    printf("%f\n", pow(2, 3) ); // Pangkat 2
+    printf("%f\n", sqrt(36) ); // Akar kuadrat
+    printf("%f\n", ceil(36.155928282) ); // Membulatkan ke desimal batas paling tinggi yang bisa dicapai
+    printf("%f\n", floor(36.155928282) ); // Membulatkan ke desimal batas paling rendah yang bisa dicapai 
     printf("%s berumur %i\n", nama1, umur);
     printf("%s berumur %i\n", nama2, umur+1);
-    printf("Nilai ipk %s adalah %.3f \n", nama1, ipk); // %.3 Untuk menentukan nilai di belakang koma
+    printf("Nilai IPK %s adalah %.3f \n", nama1, ipk); // %.3 Untuk menentukan nilai di belakang koma
     printf("Nilai phi adalah %.10f \n", phi);
     printf("%s %s %i\n", nama1, "berumur", umur+1);
     return 0;
 }
 
-// Tipe Data
+// ----- Working with number -----
 
-// int main()
-// {
-//     float ipk = 3.14f;
-//     printf("Nilai ipk %f ")
-// }
+/* Built in function for number */
+// pow -> Pangkat 3 - printf("%f\n", pow(2, 3) );
+// sqrt -> Akar kuadrat - printf("%f\n", sqrt(36) );
+// ceil -> Pembulatan ke atas - printf("%f\n", sqrt(36.155928282) );
+// floor -> Pembulatan ke bawah - printf("%f\n", sqrt(2, 3) );
 
-// Float : hanya untuk angka desimal berukuran kecil. Tipe data float tidak dapat menyimpan data pembagian yang nilai dibelakang koma tidak habis (tak berhingga) seperti 22/7

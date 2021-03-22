@@ -43,5 +43,41 @@ int main()
 }
 ```
 
-`$` digunakan sebagai _placeholder_ untuk menaruh variable yang sudah dideklarasikan diawal. `$d` untuk angka dan `$s`.
+> `$` digunakan sebagai _placeholder_ untuk menaruh variable yang sudah dideklarasikan diawal. `$d` untuk angka dan `$s`.
+
+hasil :
+
+```c
+Budi berumur 20
+Andi berumur 21
+Nilai ipk Budi adalah 3.753
+Nilai phi adalah 3.1415926536
+Budi berumur 21
+```
+
+# Working with number
+
+```c
+int main()
+{
+    printf("%f", 5+4); // 0.000000
+    printf("%d", 5.0+4); // -1717986918
+
+}
+```
+
+> Mengapa mengembalikan nilai 0.000000? karena _placeholder_ `%f` hanya berlaku untuk tipe bilangan pecahan. Tapi jika kita tambahkan mis 8.0 * 4 = 40. Dan sebaliknya *placeholder\* `%d` tidak akan berlaku untuk operasi bilangan pecahan.
+
+## Built in function for number in C
+
+```c
+int main()
+{
+    printf("%f\n", pow(2, 3) ); // Pangkat 2
+    printf("%f\n", sqrt(36) ); // Akar kuadrat
+    printf("%f\n", ceil(36.155928282) ); // Pembulatan ke atas
+    printf("%f\n", floor(36.155928282) ); // Pembulatan ke bawah
+}
+
+```
 
