@@ -74,14 +74,37 @@
 // }
 
 /* --- fgets() --- */
+// int main()
+// {
+//     char nama[10];
+//     printf("Masukkan nama anda : \n");
+//     fgets(nama, 10, stdin);
+//     printf("Nama anda adalah %s", nama);
+//     return 0;
+// }
+
+
+// ----- Basic calculator -----
+// int main()
+// {
+//     int num1;
+//     int num2;
+//     printf("Masukkan angka 1:\n");
+//     scanf("%d", &num1);
+//     printf("Masukkan angka 2:\n");
+//     scanf("%d", &num2);
+//     printf("Hasilnya adalah %d" ,num1 + num2);
+//     return 0;
+// }
+
 int main()
 {
-    char nama[10];
-    printf("Masukkan nama anda : \n");
-    fgets(nama, 10, stdin);
-    printf("Nama anda adalah %s", nama);
+    double num1;
+    double num2;
+    printf("Masukkan angka 1:\n");
+    scanf("%lf", &num1);
+    printf("Masukkan angka 2:\n");
+    scanf("%lf", &num2);
+    printf("Hasilnya adalah %lf" ,num1 + num2);
     return 0;
 }
-
-
-

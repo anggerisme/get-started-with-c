@@ -107,7 +107,7 @@ int main()
 }
 ```
 
-# Getting user input 🔠 
+# Getting user input 🔠
 
 ## Scanf()
 
@@ -155,3 +155,38 @@ int main()
     return 0;
 }
 ```
+
+# Build Simple Calculator 🧮
+
+```c
+int main()
+{
+    int num1;
+    int num2;
+    printf("Masukkan angka 1:\n");
+    scanf("%d", &num1);
+    printf("Masukkan angka 2:\n");
+    scanf("%d", &num2);
+    printf("Hasilnya adalah %d" ,num1 + num2);
+    return 0;
+}
+```
+
+> Hasil akhir `%d` dihasilkan oleh operasi `num1` + `num2`
+
+Tapi ada masalah diatas jika kita gunakan angka pecahan (_float_) misalkan 8.5 + 2 = 10 (seharusnya 10.5) oleh karena itu, kita gunakan variable `double`
+
+```c
+int main()
+{
+    double num1;
+    double num2;
+    printf("Masukkan angka 1:\n");
+    scanf("%lf", &num1);
+    printf("Masukkan angka 2:\n");
+    scanf("%lf", &num2);
+    printf("Hasilnya adalah %lf" ,num1 + num2);
+    return 0;
+}
+```
+
