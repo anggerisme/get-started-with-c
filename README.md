@@ -55,7 +55,7 @@ Nilai phi adalah 3.1415926536
 Budi berumur 21
 ```
 
-# Working with number
+# Working with number 🔢
 
 ```c
 int main()
@@ -68,7 +68,7 @@ int main()
 
 > Mengapa mengembalikan nilai 0.000000? karena _placeholder_ `%f` hanya berlaku untuk tipe bilangan pecahan. Tapi jika kita tambahkan mis 8.0 * 4 = 40. Dan sebaliknya *placeholder\* `%d` tidak akan berlaku untuk operasi bilangan pecahan.
 
-## Built in function for number in C 🔢
+## Built in function for number in C
 
 ```c
 int main()
