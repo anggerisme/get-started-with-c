@@ -68,7 +68,7 @@ int main()
 
 > Mengapa mengembalikan nilai 0.000000? karena _placeholder_ `%f` hanya berlaku untuk tipe bilangan pecahan. Tapi jika kita tambahkan mis 8.0 * 4 = 40. Dan sebaliknya *placeholder\* `%d` tidak akan berlaku untuk operasi bilangan pecahan.
 
-## Built in function for number in C
+## Built in function for number in C 🔢
 
 ```c
 int main()
@@ -81,3 +81,28 @@ int main()
 
 ```
 
+# Constant 🚧
+
+```c
+int main()
+{
+    int num = 5;
+    printf("%d\n", num);/5
+    num = 8;
+    printf("%d", num); /8
+}
+```
+
+> Nilai yang ada pada variable `Num` akan ditimpa dengan nilai terakhir yaitu 8 walaupun sebelumnya sudah mempunyai nilai 5.
+
+Dengan menggunakan const hal seperti ini tidak akan terjadi.
+
+```c
+int main()
+{
+    const int FAV_NUM = 5;// Biasanya variable di tulis dengan huruf besar.
+    printf("%d\n", num); // 5
+    num = 8;
+    printf("%d", num); /8 // error: assignment of read-only variable 'num'
+}
+```
