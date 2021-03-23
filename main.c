@@ -237,7 +237,7 @@ int main()
     }
 return 0;
 }
-
+/* --- unsolved --- */
 // int max(int num1, int num2)
 // {
 //     int result;
@@ -259,3 +259,35 @@ return 0;
 //     printf( "%d", max(23, 1));
 //     return 0;
 // }
+
+// ----- Build a calculator -----
+int main()
+{
+
+    double num1;
+    double num2;
+    char op;
+
+    printf("Enter a number :\n");
+    scanf("%lf", &num1);
+    printf("Enter operator :\n");
+    scanf(" %c", &op);
+    printf("Enter a number :\n");
+    scanf("%lf", &num2);
+
+    if(op == '+'){
+        printf("%f", num1 + num2);
+    }
+    else if(op == '-'){
+        printf("%f", num1 - num2);
+    }
+    else if(op == '/'){
+        printf("%f", num1 / num2);
+    }
+    else if(op == '*'){
+        printf("%f", num1 * num2);
+    }
+    return 0;
+
+}
+

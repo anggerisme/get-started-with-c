@@ -392,3 +392,75 @@ int main()
 return 0;
 }
 ```
+
+# Build a Calculator 2 🧮
+
+## Create variable to store input from user
+
+```c
+double num1;
+double num2;
+char op;
+```
+
+## Getting input from user
+
+```c
+printf("Enter a number :\n");
+scanf("%lf", &num1);
+printf("Enter operator :\n");
+scanf(" %c", &op);
+printf("Enter a number :\n");
+scanf("%lf", &num2);
+```
+
+## Conditional statement
+
+```c
+if(op == '+'){
+    printf("%f", num1 + num2);
+}
+else if(op == '-'){
+    printf("%f", num1 - num2);
+}
+else if(op == '/'){
+    printf("%f", num1 / num2);
+}
+else if(op == '*'){
+    printf("%f", num1 * num2);
+}
+```
+
+Source code :
+
+```c
+int main()
+{
+
+double num1;
+double num2;
+char op;
+
+printf("Enter a number :\n");
+scanf("%lf", &num1);
+printf("Enter operator :\n");
+scanf(" %c", &op);
+printf("Enter a number :\n");
+scanf("%lf", &num2);
+
+if(op == '+'){
+    printf("%f", num1 + num2);
+}
+else if(op == '-'){
+    printf("%f", num1 - num2);
+}
+else if(op == '/'){
+    printf("%f", num1 / num2);
+}
+else if(op == '*'){
+    printf("%f", num1 * num2);
+}
+return 0;
+
+}
+```
