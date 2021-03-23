@@ -147,16 +147,115 @@
 //     printf("Hi");
 // }
 
+// int main()
+// {
+//     halo("Budi",1);
+//     halo("Andi",2);
+//     halo("Sinta",3);
+//     return 0;
+// }
+
+// void halo(char nama[], int nomer)
+// {
+//     printf("Nama %s, No %d\n", nama, nomer);
+// }
+
+
+// ----- Return statement -----
+// double pangkat(double angka)
+// {
+//     double hasil = angka * angka;
+//     return hasil;
+// }
+
+// int main()
+// {
+//     printf("Hasilnya : %f", pangkat(2.0));
+//     return 0;
+// }
+
+/* --- Prototype ---*/
+
+// double pangkat(double angka);
+
+// int main()
+// {
+//     printf("Hasilnya : %f", pangkat(2.0));
+//     return 0;
+// }
+
+// double pangkat(double angka)
+// {
+//     double hasil = angka * angka;
+//     return hasil;
+// }
+
+// ----- IF Statements -----
+/*--- if ---*/
+// int main()
+// {if(5<10)
+//     printf("5 kurang dari 10");
+//     return 0;
+// }
+
+/* --- if else ---*/
+// int main()
+// {
+//     int angka;
+//     printf("Tolong masukkan angka :\n")
+//     scanf("%d", &angka);
+//     if(angka<40)
+//     {
+//         printf("Anda millenial!");
+        
+//     }
+//     else
+//     {
+//         printf("Anda baby boomer!");
+//     }
+//     return 0;
+// }
+
+/* ---if elseif ---*/
+
 int main()
 {
-    halo("Budi",1);
-    halo("Andi",2);
-    halo("Sinta",3);
-    return 0;
+    int umur;
+    printf("Tolong masukkan umur :\n");
+    scanf("%d", &umur);
+    if( umur >= 20 && umur <= 40)
+    {
+        printf("Anda millenial!");
+
+    }
+    else if(umur <=20){
+        printf("Anda generasi alfa!");
+    }
+    else
+    {
+        printf("Anda baby boomer!");
+    }
+return 0;
 }
 
-void halo(char nama[], int nomer)
-{
-    printf("Nama %s, No %d\n", nama, nomer);
-}
+// int max(int num1, int num2)
+// {
+//     int result;
 
+//     if(num1 > num2){
+        
+//         result = printf("%d lebih besar dari %d", num1, num2); 
+        
+//     }
+//     else{
+//         // printf("%d lebih kecil dari %d", num1, num2);
+//         result = printf("%d lebih besar dari %d", num2, num1);
+//         }
+//     return result;
+// }
+
+// int main()
+// {
+//     printf( "%d", max(23, 1));
+//     return 0;
+// }

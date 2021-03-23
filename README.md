@@ -230,7 +230,7 @@ int main()
 
 > Jumlah nilai yang dapat ditambahkan di dalamnya adalah 3+1 dari jumlah yang ditentukan di parameter arrays
 
-# Functions
+# Functions 🌟
 
 Kumpulan perintah yang terdapat di dalam sebuah variable dinamakan function. Function dibuat untuk menjalankan suatu perintah tertentu (spesifik). Perintah ini dapat kita panggil sewaktu waktu tergantung kebutuhan kita. diawali dengan nama dan kurung `()` kemudian diikuti _block code_. Dapat juga disebut _method_.
 
@@ -293,5 +293,102 @@ int main()
 void halo(char nama[], int nomer)
 {
     printf("Nama %s, No %d\n", nama, nomer);
+}
+```
+
+# Return statments
+
+Return statements mengembalikan nilai dari sebuah function
+A return statement terminates execution of the current function and returns control to its caller. A function may have any number of return statements.
+
+If a return statement with an expression is executed, the value of the expression is returned to the caller as the value of the function call expression. If the expression has a type different from the return type of the function in which it appears, the value is converted as if by assignment to an object having the return type of the function.
+
+```c
+double pangkat(double angka)
+{
+    double hasil = angka * angka;
+    return hasil;
+}
+
+int main()
+{
+    printf("Hasilnya : %f", pangkat(2.0));
+    return 0;
+}
+```
+
+Prototype : Kita bisa mendeklarasikan nama functionya diatas sebelum dipanggil dan meletakkan valuenya dibawah
+
+```c
+double pangkat(double angka) // nama function diatas pemanggilan
+
+int main()
+{
+    printf("Hasilnya : %f", pangkat(2.0));
+    return 0;
+}
+
+double pangkat(double angka)
+{
+    double hasil = angka * angka;
+    return hasil;
+}
+```
+
+# If statements 🔁
+
+## if
+
+```c
+int main()
+{
+    if(5<10)
+    printf("5 kurang dari 10");
+    return 0;
+}
+```
+
+## if else
+
+```c
+int main()
+{
+    int angka;
+    printf("Tolong masukkan angka :\n");
+    scanf("%d", &angka);
+    if( angka < 40 )
+    {
+        printf("Anda millenial!");
+
+    }
+    else
+    {
+        printf("Anda baby boomer!");
+    }
+return 0;
+}
+```
+
+## if else-if else
+
+```c
+int main()
+{
+    int umur;
+    printf("Tolong masukkan umur :\n");
+    scanf("%d", &umur);
+    if( umur >= 20 && umur <= 40)
+    {
+        printf("Anda millenial!");
+
+    }
+    else if(umur <=20){
+        printf("Anda generasi alfa!");
+    }
+    else
+    {
+        printf("Anda baby boomer!");
+    }
+return 0;
 }
 ```
