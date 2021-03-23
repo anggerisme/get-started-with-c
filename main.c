@@ -123,14 +123,40 @@
 // }
 
 /* Reassigning value di akhir*/
+// int main()
+// {
+//     int number[4];
+//     number[0] = 10;
+//     number[2] = 12;
+//     number[3] = 14;
+//     number[4] = 16;
+//     number[5] = 19;
+//     printf("No : %d & %d & %d & %d & %d", number[0], number[2], number[3], number[4], number[5]); //2
+//     return 0;
+// }
+
+
+// ----- Function -----
+// int main()
+// {
+//     sayHi();
+//     return 0;
+// }
+
+// void sayHi(){
+//     printf("Hi");
+// }
+
 int main()
 {
-    int number[4];
-    number[0] = 10;
-    number[2] = 12;
-    number[3] = 14;
-    number[4] = 16;
-    number[5] = 19;
-    printf("No : %d & %d & %d & %d & %d", number[0], number[2], number[3], number[4], number[5]); //2
+    halo("Budi",1);
+    halo("Andi",2);
+    halo("Sinta",3);
     return 0;
 }
+
+void halo(char nama[], int nomer)
+{
+    printf("Nama %s, No %d\n", nama, nomer);
+}
+

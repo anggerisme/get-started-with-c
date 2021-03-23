@@ -229,3 +229,69 @@ int main()
 ```
 
 > Jumlah nilai yang dapat ditambahkan di dalamnya adalah 3+1 dari jumlah yang ditentukan di parameter arrays
+
+# Functions
+
+Kumpulan perintah yang terdapat di dalam sebuah variable dinamakan function. Function dibuat untuk menjalankan suatu perintah tertentu (spesifik). Perintah ini dapat kita panggil sewaktu waktu tergantung kebutuhan kita. diawali dengan nama dan kurung `()` kemudian diikuti _block code_. Dapat juga disebut _method_.
+
+## main()
+
+Function `main()` akan dijalankan sesaat setelah program dijalankan
+
+```c
+int main()
+{
+
+}
+```
+
+## void()
+
+`Void` Merupakan tipe data function yang ketika ia tidak dapat mengembalikan nilainya sendiri. Untuk mengembalikan nilai yang ada di dalamnya kita harus memanggilnya di dalam function yang lain
+
+```c
+int main()
+{
+    halo();
+    return 0;
+}
+void halo()
+{
+    printf("Hello world!");
+}
+```
+
+Kita dapat menyimpan variable di dalam parameter `void` dan memanggilnya di function yang lain dengan menambahkan argumen disana.
+
+```c
+int main()
+{
+    halo("Budi");
+    halo("Andi");
+    halo("Sinta");
+    return 0;
+}
+void halo(char nama[])
+{
+    printf("Halo");
+}
+```
+
+> parameter yang terdapat di `void` terdapat variable `char` nama[] yang argumenya kita masukkan lewat di funtion yang lain berbarengan dengan pemanggilanya.
+
+Kita juga bisa menambahkan lebih dari satu variable di parameter `void`
+
+```c
+int main()
+{
+    halo("Budi",1);
+    halo("Andi",2);
+    halo("Sinta",3);
+    return 0;
+}
+
+void halo(char nama[], int nomer)
+{
+    printf("Nama %s, No %d\n", nama, nomer);
+}
+```
