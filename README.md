@@ -633,7 +633,7 @@ int main()
 }
 ```
 
-# loop
+# looping ⚡
 
 ## While loop
 
@@ -666,4 +666,31 @@ int main(){
     printf("sum = %i, sum");
     return 0;
 }
+```
+
+## Build the guess my number game! #1 🃏
+
+Kita akan membuat game tebak angka dengan menggunakan konsep looping.
+
+### Solusi
+
+#### 1. Mendefinisikan variable untuk menampung nilai `guess` dan `secretNumber`.
+
+```c
+int guess;
+int secretNumber  = 5; // bisa berapapun
+```
+
+#### 2. Membuat pengkondisian while (guess!= secretNumber)
+
+Jika user memasukkan angka (`guess`) selain dari angka `secretNumber` maka perulangan terus berlanjut. Untuk menampung angka yang dimasukkan user kita gunakan fungsi `scanf()`.
+
+```c
+while(guess != secretNumber)
+{
+    printf("Silahkan tebak angka :\n");
+    scanf("%d", &guess);
+}
+printf("Anda benar! Angkanya adalah %d", secretNumber);
+return 0;
 ```
