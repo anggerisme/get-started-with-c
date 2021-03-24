@@ -632,3 +632,38 @@ int main()
     printf("no1 : %d, no2 : %d\n", mahasiswa1.no1, mahasiswa2.no2);
 }
 ```
+
+# loop
+
+## While loop
+
+```c
+int main()
+{
+    int i = 1;
+    while(i >= 5){
+        printf("Urutan ke %d", i);
+        i = i + 1;
+    }
+    return 0;
+}
+```
+
+> Selama `i` _kurang dari/sama dengan_ 5 maka perulangan akan terus berlanjut. Kemudian `while` akan menampilkan perintah pertamanya, dan dibagian _increamentnya_ nilai awal tadi `i` akan di tambahkan 1 (i = i + 1 / i++) setiap perulangan berlangsung sampai batas yang telah ditetapkan yaitu <=5.
+
+## Do while
+
+Perulangan dilakukan sekali kemudian dilanjutkan dengan mengevaluasi ekspresi/kondisi dari while
+
+```c
+int main(){
+    int i, sum = 0;
+    do{
+        printf("Masukkan angka :\n");
+        scanf("%i", &i);
+        sum += i;
+    } while (i != 0);
+    printf("sum = %i, sum");
+    return 0;
+}
+```
