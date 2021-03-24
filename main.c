@@ -218,25 +218,25 @@
 
 /* ---if elseif ---*/
 
-int main()
-{
-    int umur;
-    printf("Tolong masukkan umur :\n");
-    scanf("%d", &umur);
-    if( umur >= 20 && umur <= 40)
-    {
-        printf("Anda millenial!");
+// int main()
+// {
+//     int umur;
+//     printf("Tolong masukkan umur :\n");
+//     scanf("%d", &umur);
+//     if( umur >= 20 && umur <= 40)
+//     {
+//         printf("Anda millenial!");
 
-    }
-    else if(umur <=20){
-        printf("Anda generasi alfa!");
-    }
-    else
-    {
-        printf("Anda baby boomer!");
-    }
-return 0;
-}
+//     }
+//     else if(umur <=20){
+//         printf("Anda generasi alfa!");
+//     }
+//     else
+//     {
+//         printf("Anda baby boomer!");
+//     }
+// return 0;
+// }
 /* --- unsolved --- */
 // int max(int num1, int num2)
 // {
@@ -261,33 +261,53 @@ return 0;
 // }
 
 // ----- Build a calculator -----
-int main()
-{
+// int main()
+// {
 
-    double num1;
-    double num2;
-    char op;
+//     double num1;
+//     double num2;
+//     char op;
 
-    printf("Enter a number :\n");
-    scanf("%lf", &num1);
-    printf("Enter operator :\n");
-    scanf(" %c", &op);
-    printf("Enter a number :\n");
-    scanf("%lf", &num2);
+//     printf("Enter a number :\n");
+//     scanf("%lf", &num1);
+//     printf("Enter operator :\n");
+//     scanf(" %c", &op);
+//     printf("Enter a number :\n");
+//     scanf("%lf", &num2);
 
-    if(op == '+'){
-        printf("%f", num1 + num2);
-    }
-    else if(op == '-'){
-        printf("%f", num1 - num2);
-    }
-    else if(op == '/'){
-        printf("%f", num1 / num2);
-    }
-    else if(op == '*'){
-        printf("%f", num1 * num2);
-    }
-    return 0;
+//     if(op == '+'){
+//         printf("%f", num1 + num2);
+//     }
+//     else if(op == '-'){
+//         printf("%f", num1 - num2);
+//     }
+//     else if(op == '/'){
+//         printf("%f", num1 / num2);
+//     }
+//     else if(op == '*'){
+//         printf("%f", num1 * num2);
+//     }
+//     return 0;
 
-}
+// }
 
+// ----- Switch Statements -----
+
+// int main()
+// {
+//     // char ipk = 'A';
+//     switch('A'){
+//         case 'A':
+//             printf("Nilai kamu sangat bagus!");
+            
+//         case 'B':
+//             printf("Nilai kamu bagus");
+//             break;
+//         case 'C':
+//             printf("Nilai kamu cukup");
+//             break;
+//         default :
+//             printf("Nilai yang kamu masukkan salah!");
+//         }
+//         return 0;
+// }

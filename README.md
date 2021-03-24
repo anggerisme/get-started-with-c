@@ -414,6 +414,8 @@ printf("Enter a number :\n");
 scanf("%lf", &num2);
 ```
 
+> Format specifier `%c` harus diberikan spasi di awalnya jika tidak maka akan error
+
 ## Conditional statement
 
 ```c
@@ -437,30 +439,107 @@ Source code :
 int main()
 {
 
-double num1;
-double num2;
-char op;
+    double num1;
+    double num2;
+    char op;
 
-printf("Enter a number :\n");
-scanf("%lf", &num1);
-printf("Enter operator :\n");
-scanf(" %c", &op);
-printf("Enter a number :\n");
-scanf("%lf", &num2);
+    printf("Enter a number :\n");
+    scanf("%lf", &num1);
+    printf("Enter operator :\n");
+    scanf(" %c", &op);
+    printf("Enter a number :\n");
+    scanf("%lf", &num2);
 
-if(op == '+'){
-    printf("%f", num1 + num2);
-}
-else if(op == '-'){
-    printf("%f", num1 - num2);
-}
-else if(op == '/'){
-    printf("%f", num1 / num2);
-}
-else if(op == '*'){
-    printf("%f", num1 * num2);
-}
-return 0;
+    if(op == '+'){
+        printf("%f", num1 + num2);
+    }
+    else if(op == '-'){
+        printf("%f", num1 - num2);
+    }
+    else if(op == '/'){
+        printf("%f", num1 / num2);
+    }
+    else if(op == '*'){
+        printf("%f", num1 * num2);
+    }
+    return 0;
 
 }
+```
+
+# Switch Statements
+
+Switch case statement digunakan untuk mengecek nilai dari suatu variable apakah sama dengan case yang ada di dalam `switch`
+
+## Ketentuan
+
+1. Ekspressi yang berada di dalam switch harus memuat nilai yang sifatnya konstant. Tidak boleh memakai kondisional.
+
+```c
+switch(1+2+3);
+switch(1*2/3);
+```
+
+2. Nilai default pada switch bisa tidak ditulis. fungsinya sama seperti `else` pada if
+
+3. `Break` digunakan untuk menghentikan proses pembacaan kode sesaat setelah suatu ekspressi terpenuhi (_match_) di `case`nya. Penulisan `break` bersifat opsional yang artinya tanpa ditulispun program akan berjalan dengan normal.
+
+```c
+switch (2+3){
+    case 5 : ("Jawabanya adalah 5!");
+    break; // Proses pembacaan kode akan berhenti di case 5
+    case 6 : ("Jawabanya adalah 6!");
+
+}
+```
+
+jika kita tidak menggunakan `break` hasilnya akan seperti ini :
+
+```c
+switch (2+3){
+    case 5 : ("Jawabanya adalah 5!");
+    case 6 : ("Jawabanya adalah 6!");
+
+}
+```
+
+> Jawabanya adalah 5!Jawabanya adalah 6!.
+
+4. _Nesting_ di switch statement bisa dilakukan walaupun tidak disarankan karena akan membuat code susah dibaca.
+
+## Penulisan syntax
+
+```c
+int main()
+{
+    char ipk = 'A';
+    switch(ipk){
+        case 'A':
+            printf("Nilai kamu sangat bagus!");
+            break;
+        case 'B':
+            printf("Nilai kamu bagus");
+            break;
+        case 'C':
+            printf("Nilai kamu cukup");
+            break;
+        default :
+            printf("Nilai yang kamu masukkan salah!");
+        }
+        return 0;
+}
+
+```
+
+Bisa ditulis tanpa membutuhkan nama variable, tetapi langsung ekspresi/nilainya
+
+```c
+int main()
+{
+    switch('A'){
+        case 'A':
+            printf("Nilai kamu sangat bagus!");
+            break;
+}
+
 ```
