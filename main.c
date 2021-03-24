@@ -311,3 +311,77 @@
 //         }
 //         return 0;
 // }
+
+// ----- Struct ------
+
+/* --- membuat variable struct --- */
+
+/* Cara 1*/
+
+// struct Mahasiswa{
+//     double ipk;
+// } 
+
+// mahasiswa1, 
+// mahasiswa2;
+
+// int main()
+// {
+//     mahasiswa1.ipk = 3.45;
+//     mahasiswa2.ipk = 2.75;
+//     printf("ipk : %lf\n", mahasiswa1.ipk);
+//     printf("ipk : %lf", mahasiswa2.ipk);
+// }
+
+/* Cara 2 */
+
+// struct Mahasiswa{
+//     double ipk;
+// };
+
+// int main()
+// {
+//     struct Mahasiswa mahasiswa1;
+//     struct Mahasiswa mahasiswa2;
+//     mahasiswa1.ipk = 3.45;
+//     mahasiswa2.ipk = 2.75;
+//     printf("ipk : %lf\n", mahasiswa1.ipk);
+//     printf("ipk : %lf", mahasiswa2.ipk);
+// }
+
+/* --- Mengakses element struct --- */
+
+struct Mahasiswa{
+    char nama[50];
+    int no1, no2;
+}mahasiswa1, mahasiswa2;
+
+int main()
+{
+    strcpy(mahasiswa1.nama, "Andi");
+    mahasiswa1.no1 = 1;
+    mahasiswa2.no2 = 2;
+    printf("Nama : %s\n No1 : %d", mahasiswa1.nama, mahasiswa1.no1);
+}
+
+
+
+
+
+
+
+
+
+// struct Mahasiswa{
+//     char nama[20];
+//     char prodi[20];
+//     int usia;
+//     double ipk;
+// }
+
+// int main(){
+//     struct Mahasiswa mahasiswa1;
+//     mahasiswa1.nama[] = "Andi";
+//     mahasiswa1.prodi[]
+// }
+

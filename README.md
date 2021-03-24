@@ -467,7 +467,7 @@ int main()
 }
 ```
 
-# Switch Statements
+# Switch Statements 🔁
 
 Switch case statement digunakan untuk mengecek nilai dari suatu variable apakah sama dengan case yang ada di dalam `switch`
 
@@ -542,4 +542,93 @@ int main()
             break;
 }
 
+```
+
+# Struct 📰
+
+Merupakan kumpulan dari berbagai tipe data (int, char, double, dll) yang disimpan dalam suatu struktur data baru `Struct`. `Struct` dapat digunakan untuk membuat banyak salinan yang datanya merujuk pada struct utama (parent)
+
+## Deklarasi pada struct
+
+Pengisian nilai tidak boleh dilakukan di awal deklarasi, karena sesaat `struct` baru dibuat maka belum ada memory yang dialokasikan kepadanya.
+
+```c
+struct Mahasiswa{
+    char nama[20] = "Andi"; // Compiler error : cannot intialize members here
+}
+```
+
+## Pembuatan variable struct
+
+Dalam membuat salinan struct yang baru ada 2 cara penulisan yang bisa digunakan
+
+### Cara 1
+
+Menuliskan nama structnya langsung setelah _block code_ {} struct parentnya. Ini akan menjadikan salinan `struct` tersebut menjadi global. Karena terletak diluar dari _code block_ apapun.
+
+```c
+struct Mahasiswa{
+    double ipk;
+} mahasiswa1, mahasiswa2; // Global variable
+
+int main()
+{
+    mahasiswa1.ipk = 3.45;
+    mahasiswa2.ipk = 2.75;
+    printf("ipk : %lf\n", mahasiswa1.ipk);
+    printf("ipk : %lf", mahasiswa2.ipk);
+}
+```
+
+### Cara 2
+
+```c
+struct Mahasiswa{
+    double ipk;
+};
+
+int main()
+{
+    struct Mahasiswa mahasiswa1;
+    struct Mahasiswa mahasiswa2;
+    mahasiswa1.ipk = 3.45;
+    mahasiswa2.ipk = 2.75;
+    printf("ipk : %lf\n", mahasiswa1.ipk);
+    printf("ipk : %lf", mahasiswa2.ipk);
+}
+```
+
+Catatan : Untuk penulisan tipe data string kita harus gunakan function `strcopy()` karena pada dasarnya string yang kita simpan di dalam tipe data `char` adalah kumpulan karakter yang berarti itu arrays.
+
+```c
+struct Mahasiswa{
+    char nama[50];
+
+} mahasiswa1, mahasiswa2;
+
+int main()
+{
+    strcpy(mahasiswa1.nama, "Andi");
+
+}
+
+```
+
+## Cara Mengakses element struct
+
+Untuk mengakses element yang berada disuatu `struct` kita dapat menggunakan dot (.) operator.
+
+```c
+struct Mahasiswa{
+
+    int no1, no2;
+} mahasiswa1, mahasiswa2;
+
+
+int main()
+{
+    mahasiswa1.no1 = 1;
+    mahasiswa2.no2 = 2;
+    printf("no1 : %d, no2 : %d\n", mahasiswa1.no1, mahasiswa2.no2);
+}
 ```
