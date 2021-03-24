@@ -694,3 +694,107 @@ while(guess != secretNumber)
 printf("Anda benar! Angkanya adalah %d", secretNumber);
 return 0;
 ```
+
+## Build the guess my number game! #2 🃏
+
+Membuat functionalitas game menjadi lebih dinamis dan interaktif dengan menambahkan fitur :
+
+1. `guessLimit` : kesempatan yang dimiliki user untuk menebak sampai 3 kali, jika lebih dari 3 kali angka belum tertebak maka game berakhir
+2. `guessCount` : Menghitung berapa kali user menebak angka. `guessCount` digunakan sebagai patokan dalam menentukan apakah permainan berlanjut atau tidak.
+3.
+
+### Solusi
+
+#### Membuat variable untuk fitur baru
+
+```c
+int guess;
+int secretNumber = 5;
+int guessLimit = 3;
+int guessCount = 0;
+int outOfGuesses = 0;
+```
+
+#### Menentukan kondisi menggunakan if untuk menghitung jumlah tebakan
+
+Jika kondisi if masih terpenuhi maka jalankan perintah yang ada di dalam if dan jika sudah tidak lagi memenuhi maka lakukan perintah `outOfGlasses` yang ada di `else`.
+
+```c
+while(guess != secretNumber)
+{
+    if(guessCount < guessLimit)
+    {
+        printf("Silahkan tebak angka :\n");
+        scanf("%d", &guess);
+        guessCount++;
+    }
+    else
+    {
+        outOfGlasses = 1;
+    }
+
+}
+```
+
+> `outOfGlasses` digunakan untuk mengindikasikan bahwa tidak ada lagi kesempatan. Dengan mengganti nilainya menjadi 1 dari yang tadinya 0.
+
+#### Menambahkan 2 kondisi di `while` yaitu guess != secretNumber && outOfGuess == 1
+
+2 Skenario diatas jika kondisinya masih sama-sama benar (sifat dari logika AND &&) maka perintah tetap dijalankan.
+
+```c
+while(guess != secretNumber && outOfGuess ==0 )
+{
+    ....
+ {
+```
+
+#### Menambahkan kondisi jika `outOfGuess` == 1 yang berarti kalah, dan selain itu (outOfGuess == 0) maka menang
+
+```c
+while(guess != secretNumber && outOfGuess ==0 )
+{
+    ...
+}
+if(outOfGuess == 1)
+{
+    printf("Anda menang!");
+}
+else
+{
+    printf("Anda kalah!");
+}
+```
+
+#### Final Code
+
+```c
+int main()
+{
+    int guess;
+    int secretNumber = 5;
+    int guessLimit = 3;
+    int guessCount = 0;
+    int outOfGuess = 0;
+    while(guess != secretNumber && outOfGuess == 0)
+    {
+        if (guessCount < guessLimit){
+            printf("Silahkan tebak angka :\n");
+            scanf("%d", &guess);
+            guessCount++;
+        }
+        else {
+            outOfGuess = 1; // Isikan outOfGuess dengan 1 untuk menyatakan salah
+        }
+
+    }
+    if (outOfGuess == 1){
+        printf("Anda kalah!");
+    }
+    else {
+        printf("Anda benar!");
+    }
+
+    return 0;
+}
+```
