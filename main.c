@@ -351,26 +351,18 @@
 
 /* --- Mengakses element struct --- */
 
-struct Mahasiswa{
-    char nama[50];
-    int no1, no2;
-}mahasiswa1, mahasiswa2;
+// struct Mahasiswa{
+//     char nama[50];
+//     int no1, no2;
+// }mahasiswa1, mahasiswa2;
 
-int main()
-{
-    strcpy(mahasiswa1.nama, "Andi");
-    mahasiswa1.no1 = 1;
-    mahasiswa2.no2 = 2;
-    printf("Nama : %s\n No1 : %d", mahasiswa1.nama, mahasiswa1.no1);
-}
-
-
-
-
-
-
-
-
+// int main()
+// {
+//     strcpy(mahasiswa1.nama, "Andi");
+//     mahasiswa1.no1 = 1;
+//     mahasiswa2.no2 = 2;
+//     printf("Nama : %s\n No1 : %d", mahasiswa1.nama, mahasiswa1.no1);
+// }
 
 // struct Mahasiswa{
 //     char nama[20];
