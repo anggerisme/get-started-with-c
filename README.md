@@ -895,7 +895,7 @@ int main()
 
 > `%p` merupakan _format specifier_ yang digunakan untuk menampilkan alamat memory dari suatu nilai.
 
-# Pointer ➡️ 
+# Pointer ➡️
 
 Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang menyimpan lokasi memory dari variable lainya. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya.
 C menggunakan pointers dengan 3 cara :
@@ -924,3 +924,40 @@ int main()
 Seperti biasanya kita mendeklarasikan tipe data `int` untuk variable `i` dan `j` kemudian `int*p` ditujukan sebagai penanda bahwa ada variable yang bernama `p` untuk meminta compiler mendeklarasikanya sebagai pointer untuk tipe data integer. `*` mengindikasikan bahwa ada suatu variable yang dideklarasikan sebagai pointer. Jika kamu ingin mendeklarasikan suatu variable sebagai pointer maka gunakan (\*).
 
 `p = &i` artinya nilai `p` yang sebelumnya belum kita inisialisasi kita isi dengan alamat memory dari variable i. kenapa `p` bisa diisi dengan _memory address_? karena kita telah menambahkan \* sebelumnya. Setelah `p` terisi dengan alamat memory `i` maka otomatis pointer yang sebelumnya di `p` kini juga ada di `i`
+
+`&` Dalam konteks pointer merupakan operator "**address-of**" yang mengembalikan alamat memory dari suatu operand. Operand disini ialah variable yang diberi & di depanya.
+
+## Deferencing Pointers 🏹 
+
+_Deferencing_ digunakan untuk mengakses atau memanipulasi data yang terdapat di dalam suatu memory yang ditunjuk oleh pointer. (\*) (asterisk) digunakan bersamaan dengan pointer variable saat men-deferencing pointer variable.
+
+```c
+int main()
+{
+    int a = 1;
+    int b;
+    int *p; // Pointer yang belum diinisialisasi
+    p = &a; // Mengisikan alamat memory int a ke dalam p
+    b = *p; // Mengisi nilai b dengan *p yaitu lokasi memory dari int a
+
+    printf("a : %d, b :%d, p :%d", a, b, *p);
+    return 0; // 1, 1, 1
+
+ }
+```
+
+Contoh lain :
+
+```c
+int main()
+{
+    int age = 30;
+    int *pAge = &age;
+
+    printf("%p\n", &pAge); // Menyimpan alamat memory dari age
+    printf("%d", *pAge); // Menyimpan value dari yang di-pointing oleh pAge yaitu age
+    return 0;
+}
+```
+
+> & -> %p : Digunakan untuk mengakses alamat memory | %d : Digunakan untuk deferencing/mengakses value dari suatu alamat memory\*/
