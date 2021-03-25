@@ -840,7 +840,7 @@ int main(){
 }
 ```
 
-## 2D Arrays & Nested Loops
+## 2D Arrays & Nested Loops 🐣
 
 ```c
 int main()
@@ -848,7 +848,7 @@ int main()
     int arrays[3][2] = {{1, 2},
                         {3, 4},
                         {5, 6}};
-    int i, j;🐣
+    int i, j;
     for (i = 0; i < 3 ;i++){
         for (j = 0; j < 2;j++){
             printf("%d", arrays[i][j]);
@@ -860,3 +860,37 @@ int main()
 ```
 
 > `i` melakukan perulangan (sebanyak 3 kali), 3 di dapat dari jumlah baris(_rows_) yang ada di arrays, setiap `i` melakukan perulangan di dalamnya terdapat `j` yang juga melakukan perulangan pada setiap nilai yang terdapat di tiap-tiap baris `i` yaitu sebanyak 2. 2 di dapat dari jumlah kolom yang terdapat di masing masing baris `i`.
+
+# Memory Addressing
+
+Semua komputer memiliki memory yang dikenal sebagai RAM dan RAM digunakan untuk menyimpan program yang sedang berjalan dikomputer. Memory dapat dikatakan sebagai Arrays yang menyimpan _bytes_-_bytes_. Di dalam arrays inilah setiap lokasi memory mempunyai alamatnya sendiri-sendiri. Alamat memory layaknya seperti indeks di dalam arrays. Komputer dapat mengakses alamat memory kapan saja (karena itulah dinamakan _Random access memory_).
+
+```c
+float f;
+```
+
+> Dibaca : Hi komputer! Alokasikan memory untuk `f` yang menyimpan nilai dengan tipe data `float`. Saat program dijalankan komputer akan menyediakan sebuah memory baru untuk tipe data `float` dengan alamat memory tertentu.
+
+Sebagai pemrogram kita dapat mengakses nilai/value dari variable `f` dengan cukup memanggil nama variable tersebut. Sedangkan dibalik layar yang sebenarnya terjadi ialah komputer mencari alamat memory yang menyimpan nilai dari variable `f`. Jadi komputer mencari alamat memorynya bukan nama variablenya.
+
+```c
+f = 3.14;
+```
+
+Komputer memahaminya sebagai berikut, "Ambil nilai 3.14 ke dalam memory yang beralamat di 248,0000 (misalnya)". Komputer selalu _berfikir_ bahwa yang disebut memory ialah alamat dari suatu nilai.
+
+## Menampilkan lokasi memory
+
+Kita dapat mengakses lokasi memory dari suatu nilai yang kita simpan dalam variablef `f`.
+
+```c
+int main()
+{
+    float f = 3.14;
+    printf("%p", &f);
+
+    return 0;
+}
+```
+
+> `%p` merupakan _format specifier_ yang digunakan untuk menampilkan alamat memory💾 dari suatu nilai.
