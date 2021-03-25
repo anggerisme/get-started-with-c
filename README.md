@@ -861,7 +861,7 @@ int main()
 
 > `i` melakukan perulangan (sebanyak 3 kali), 3 di dapat dari jumlah baris(_rows_) yang ada di arrays, setiap `i` melakukan perulangan di dalamnya terdapat `j` yang juga melakukan perulangan pada setiap nilai yang terdapat di tiap-tiap baris `i` yaitu sebanyak 2. 2 di dapat dari jumlah kolom yang terdapat di masing masing baris `i`.
 
-# Memory Addressing
+# Memory Addressing 💾
 
 Semua komputer memiliki memory yang dikenal sebagai RAM dan RAM digunakan untuk menyimpan program yang sedang berjalan dikomputer. Memory dapat dikatakan sebagai Arrays yang menyimpan _bytes_-_bytes_. Di dalam arrays inilah setiap lokasi memory mempunyai alamatnya sendiri-sendiri. Alamat memory layaknya seperti indeks di dalam arrays. Komputer dapat mengakses alamat memory kapan saja (karena itulah dinamakan _Random access memory_).
 
@@ -893,4 +893,34 @@ int main()
 }
 ```
 
-> `%p` merupakan _format specifier_ yang digunakan untuk menampilkan alamat memory💾 dari suatu nilai.
+> `%p` merupakan _format specifier_ yang digunakan untuk menampilkan alamat memory dari suatu nilai.
+
+# Pointer ➡️ 
+
+Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang menyimpan lokasi memory dari variable lainya. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya.
+C menggunakan pointers dengan 3 cara :
+
+1. Untuk membuat **dynamic data structures** - _data structure_ dibuat dari beberapa block memory yang dialokasikan dari memory heap saat _run-time_
+2. C menggunakan pointers untuk meng*handle* **variable parameters** yang dimasukkan ke functions
+3. Pointers di C bisa kita manfaatkan untuk mengakses informasi/nilai yang disimpan dalam suatu arrays. Disana ada hubungan yang erat antara arrays dan pointers.
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    int i,j;
+    int *p;   /* a pointer to an integer */
+    p = &i;
+    *p=5;
+    j=i;
+    printf("%d %d %d\n", i, j, *p);
+    return 0;
+}
+```
+
+> 5, 5, 5
+
+Seperti biasanya kita mendeklarasikan tipe data `int` untuk variable `i` dan `j` kemudian `int*p` ditujukan sebagai penanda bahwa ada variable yang bernama `p` untuk meminta compiler mendeklarasikanya sebagai pointer untuk tipe data integer. `*` mengindikasikan bahwa ada suatu variable yang dideklarasikan sebagai pointer. Jika kamu ingin mendeklarasikan suatu variable sebagai pointer maka gunakan (\*).
+
+`p = &i` artinya nilai `p` yang sebelumnya belum kita inisialisasi kita isi dengan alamat memory dari variable i. kenapa `p` bisa diisi dengan _memory address_? karena kita telah menambahkan \* sebelumnya. Setelah `p` terisi dengan alamat memory `i` maka otomatis pointer yang sebelumnya di `p` kini juga ada di `i`
