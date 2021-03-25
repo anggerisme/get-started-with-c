@@ -24,13 +24,51 @@
 // }
 
 
+// int main(){
+//     int i, sum = 0;
+//     do{
+//         printf("Masukkan angka :\n");
+//         scanf("%i", &i);
+//         sum += i;
+//     } while (i != 0);
+//     printf("sum = %i, sum");
+//     return 0;
+// }
+
+// ---- For Loop -----
+
+/* while */
+
+// int main()
+// {
+//     int i = 1;
+//     while(i<=5)
+//     {
+//         printf("%d\n",i);
+//         i++;
+//     }
+//     return 0;
+// }
+
+/* --- for loop ---*/
+
+// int main(){
+//     for (int i = 1; i <= 5;i++)
+//     {
+//         printf("%d\n", i);
+//     }
+//     return 0;
+    
+// }
+
+/*--- Mengambil indeks array menggunakan for loop ---*/
+
 int main(){
-    int i, sum = 0;
-    do{
-        printf("Masukkan angka :\n");
-        scanf("%i", &i);
-        sum += i;
-    } while (i != 0);
-    printf("sum = %i, sum");
+    int arrays[] = {1, 2, 3, 4, 5, 6};
+    for (int i = 0; i <= 5;i++)
+    {
+        printf("%d\n", arrays[i]);
+    }
     return 0;
+    
 }
