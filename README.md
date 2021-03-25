@@ -839,3 +839,24 @@ int main(){
 
 }
 ```
+
+## 2D Arrays & Nested Loops
+
+```c
+int main()
+{
+    int arrays[3][2] = {{1, 2},
+                        {3, 4},
+                        {5, 6}};
+    int i, j;🐣
+    for (i = 0; i < 3 ;i++){
+        for (j = 0; j < 2;j++){
+            printf("%d", arrays[i][j]);
+        }
+    }
+
+    return 0;
+}
+```
+
+> `i` melakukan perulangan (sebanyak 3 kali), 3 di dapat dari jumlah baris(_rows_) yang ada di arrays, setiap `i` melakukan perulangan di dalamnya terdapat `j` yang juga melakukan perulangan pada setiap nilai yang terdapat di tiap-tiap baris `i` yaitu sebanyak 2. 2 di dapat dari jumlah kolom yang terdapat di masing masing baris `i`.

@@ -63,12 +63,28 @@
 
 /*--- Mengambil indeks array menggunakan for loop ---*/
 
-int main(){
-    int arrays[] = {1, 2, 3, 4, 5, 6};
-    for (int i = 0; i <= 5;i++)
-    {
-        printf("%d\n", arrays[i]);
-    }
-    return 0;
+// int main(){
+//     int arrays[] = {1, 2, 3, 4, 5, 6};
+//     for (int i = 0; i <= 5;i++)
+//     {
+//         printf("%d\n", arrays[i]);
+//     }
+//     return 0;
     
+// }
+
+// ---- 2D Arrays & Nested Loops -----
+int main()
+{
+    int arrays[3][2] = {{1, 2},
+                        {3, 4},
+                        {5, 6}};
+    int i, j;
+    for (i = 0; i < 3 ;i++){
+        for (j = 0; j < 2;j++){
+            printf("%d", arrays[i][j]);
+        }
+    }
+
+    return 0;
 }
