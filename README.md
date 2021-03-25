@@ -633,7 +633,7 @@ int main()
 }
 ```
 
-# looping ⚡
+# looping 🔁
 
 ## While loop
 
@@ -796,5 +796,46 @@ int main()
     }
 
     return 0;
+}
+```
+
+## For Loop
+
+Sama seperti while tetapi for lebih simple dengan menyimpan nilai awal, kondisi dan increament/decreamentnya di dalam satu kurung.
+
+```c
+int i = 0;
+while(i<5)
+{
+    printf("%d",i);
+    i++;
+}
+```
+
+```c
+int main(){
+    int arrays[] = {1, 2, 3, 4, 5, 6};
+    for (int i = 0; i <= 5;i++)
+    {
+        printf("%d\n", arrays[i]);
+    }
+    return 0;
+
+}
+```
+
+### Indexing arrays using for loop
+
+Kita dapat memanfaatkan `i` sebagai selector untuk mengambil nilai suatu arrays berdasarkan indeksnya karena `i` akan berulang dan menghasilkan suatu angka yang dapat kita manfaatkan untuk melakukan _indexing_
+
+```c
+int main(){
+    int arrays[] = {1, 2, 3, 4, 5, 6};
+    for (int i = 0; i <= 5;i++)
+    {
+        printf("%d\n", arrays[i]); // <-- Intinya disini arrays[selector i]
+    }
+    return 0;
+
 }
 ```
