@@ -1,8 +1,10 @@
 # Table of content
 
 - [Table of content](#table-of-content)
-- [Hello World!](#hello-world)
-- [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
+- [Hello World! 👋](#hello-world-)
+  - [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
+- [Data types 📦](#data-types-)
+  - [Basic data type](#basic-data-type)
 - [The power of variable & printf 🔥](#the-power-of-variable--printf-)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
@@ -57,7 +59,7 @@
 - [Pointer ➡️](#pointer-️)
   - [Deferencing Pointers 🏹](#deferencing-pointers-)
 
-# Hello World!
+# Hello World! 👋
 
 ```c
 #include <stdio.h>
@@ -70,7 +72,7 @@ int main()
 }
 ```
 
-# Drawing cool shape! ⛰️
+## Drawing cool shape! ⛰️
 
 ```c
 int main()
@@ -83,6 +85,35 @@ int main()
     return 0;
 }
 ```
+
+# Data types 📦
+
+Deklarasi variable di C tidak terlepas dari jenis/tipe data seperti apa yang akan di isikan ke dalamnya. Tipe data di C dapat dikelompokkan menjadi 4 seperti di bawah ini
+
+| Tipe Data             | Jenis                            | Keterangan                                                                                          |
+| --------------------- | -------------------------------- | --------------------------------------------------------------------------------------------------- |
+| Basic type            | int, char, float, double         | Merupakan tipe data aritmatika seperti integer dan float                                            |
+| Enumeration data type | enum                             | Tipe data enum digunakan untuk mengisikan nama dari variable constant integer yang berbentuk daftar |
+| Derived data type     | array, pointer, structure, union | Tipe data turunan                                                                                   |
+| Void data type        | void                             | Tipe data yang mengindikasikan tidak ada value yang tersedia                                        |
+
+## Basic data type
+
+###
+
+Tipe Integer
+
+| Tipe Data                   | Memory                       | Rentang                                              | Format specifier |
+| --------------------------- | ---------------------------- | ---------------------------------------------------- | ---------------- |
+| char                        | 1 byte                       | -128 to 127 or 0 to 255                              | %c               |
+| Unsigned char               | 1 byte                       | 0 t0 255                                             | %c               |
+| signed char                 | 1 byte                       | -128 to 127                                          | %c               |
+| int or signed int           | 2 or 4 byte                  | -32,768 to 32,767 or -2,147,483,648 to 2,147,483,647 | %d               |
+| unsigned int                | 2 or 4 bytes                 | 0 to 65,535 or 0 to 4,294,967,295                    | %i               |
+| signed short                | 2 byte                       | -32,768 to 32,767                                    | %hd              |
+| unsigned short              | 2 byte                       | 0 to 65,535                                          | %hu              |
+| long int or signed long int | 8 byte or 4 byte (32 bit OS) | -9223372036854775808 to 9223372036854775807          | %ld              |
+| unsigned long               | 8 bytes                      | 0 to 18446744073709551615                            | %lu              |
 
 # The power of variable & printf 🔥
 
@@ -993,8 +1024,10 @@ _Deferencing_ digunakan untuk mengakses atau memanipulasi data yang terdapat di 
 ```c
 int main()- [Hello World!](#hello-world)
 - [Table of content](#table-of-content)
-- [Hello World!](#hello-world)
-- [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
+- [Hello World! 👋](#hello-world-)
+  - [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
+- [Data types 📦](#data-types-)
+  - [Basic data type](#basic-data-type)
 - [The power of variable & printf 🔥](#the-power-of-variable--printf-)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
