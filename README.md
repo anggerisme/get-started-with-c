@@ -9,7 +9,8 @@
 - [Data types 📦](#data-types-)
   - [Basic data type](#basic-data-type)
     - [Table Tipe Data Integer](#table-tipe-data-integer)
-    - [Keterangan](#keterangan)
+      - [Keterangan](#keterangan)
+    - [Sizeof operator](#sizeof-operator)
 - [The power of variable & printf 🔥](#the-power-of-variable--printf-)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
@@ -120,7 +121,7 @@ Deklarasi variable di C tidak terlepas dari jenis/tipe data seperti apa yang aka
 | **long** int / sig long int | 8 byte or 4 byte (32 bit OS) | -9223372036854775808 to 9223372036854775807          | `%ld`            |
 | unsigned long               | 8 bytes                      | 0 to 18446744073709551615                            | `%lu`            |
 
-### Keterangan
+#### Keterangan
 
 Signed adalah penanda bahwa suatu tipe data **dapat menampung nilai negative** tapi mempunyai rentang **nilai yang kecil** pada bilangan positifnya
 Unsigned sebaliknya **tidak dapat menampung nilai negative** tapi mempunyai rentang nilai yang **lebih besar** pada bilangan positifnya.
@@ -129,6 +130,22 @@ Unsigned sebaliknya **tidak dapat menampung nilai negative** tapi mempunyai rent
 2. Short : Cukup ditulis `short` saja, C akan menganggap bahwa `short` yang dimaksud adalah `short int`.
 3. long : Juga termasuk `long` cukup ditulis long saja
 4. long long : cukup ditulis `long long`
+
+### Sizeof operator
+
+`sizeof` digunakan untuk mengetahui ukuran byte dari data type variable. Output yang dihasilkan akan berbeda dari masing masing komputer tergantung dari beberapa compiler.
+
+```c
+int main()
+{
+    printf("C : %d\n",sizeof(char)); // 1
+    printf("C : %d\n",sizeof(short)); // 2
+    printf("C : %d\n",sizeof(int)); // 4
+    printf("C : %d",sizeof(long));  // 8
+
+    return 0;
+}
+```
 
 # The power of variable & printf 🔥
 
@@ -1044,7 +1061,8 @@ int main()- [Hello World!](#hello-world)
 - [Data types 📦](#data-types-)
   - [Basic data type](#basic-data-type)
     - [Table Tipe Data Integer](#table-tipe-data-integer)
-    - [Keterangan](#keterangan)
+      - [Keterangan](#keterangan)
+    - [Sizeof operator](#sizeof-operator)
 - [The power of variable & printf 🔥](#the-power-of-variable--printf-)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
