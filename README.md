@@ -1,5 +1,8 @@
 # Table of content
 
+<details>
+    <summary> Click to expand! </summary>
+
 - [Table of content](#table-of-content)
 - [Hello World! 👋](#hello-world-)
   - [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
@@ -58,6 +61,8 @@
   - [Menampilkan lokasi memory](#menampilkan-lokasi-memory)
 - [Pointer ➡️](#pointer-️)
   - [Deferencing Pointers 🏹](#deferencing-pointers-)
+
+</details>
 
 # Hello World! 👋
 
