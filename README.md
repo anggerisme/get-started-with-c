@@ -11,7 +11,16 @@
     - [Table Tipe Data Integer](#table-tipe-data-integer)
       - [Keterangan](#keterangan)
     - [Sizeof operator](#sizeof-operator)
-- [The power of variable & printf 🔥](#the-power-of-variable--printf-)
+- [Variable 🔖](#variable-)
+  - [Variable declaration dan definition](#variable-declaration-dan-definition)
+  - [Perbedaan declaration dan definition](#perbedaan-declaration-dan-definition)
+  - [Variable initialization](#variable-initialization)
+  - [Penulisan nama variable](#penulisan-nama-variable)
+  - [Variable scopes](#variable-scopes)
+    - [Jenis jenis scope](#jenis-jenis-scope)
+      - [Local scope](#local-scope)
+      - [Global scope](#global-scope)
+- [Printf](#printf)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
 - [Constant 🚧](#constant-)
@@ -147,7 +156,53 @@ int main()
 }
 ```
 
-# The power of variable & printf 🔥
+# Variable 🔖
+
+Variable digunakn sebagai tempat untuk menampung sebuah nilai. Di dalam memory komputer, yang disimpan bukanlah nama variablenya tetapi nilai dari variable itu sendiri. jadi komputer akan mengakses nilai dari variable tersebut dengan menggunakan alamat memory. Nama variable itu sendiri tidak disimpan di dalam memory.
+
+## Variable declaration dan definition
+
+Variable _definition_ (atau kadang sering disebut _declaration_ ) tidak lain dan tidak bukan adalah memberitahu komputer bahwa kita ingin memesan sebuah memory untuk program kita. Untuk mendefinisikan variable kita perlu mendefinisikan tipe datanya kemudian diikuti dengan nama variable. Pengisian nilai variable (inisialisasi) tidak perlu dilakukan di awal.
+
+```c
+int a; // tipe data : int nama variable : a;
+char b = 'A'; // tipe data : char nama variable : b; dengan nilai : A
+```
+
+## Perbedaan declaration dan definition
+
+Variable di **definsikan** (_definition_)ketika compiler men-_generate_ instruksi untuk mengalokasikan sejumlah memory untuk variable. Sedangkan deklarasi (_declaration_) adalah saat kita memberi tahu compiler bahwa ada variable yang baru saja dibuat diikuti tipe data tertentu. Compiler tidak menghasilkan instruksi untuk menghasilkan instruksi mengalokasikan sejumlah memory pada saat itu. Variable definition juga termasuk deklarasi, tetapi tidak semua variable declaration adalah definition.
+
+## Variable initialization
+
+Inisialization adalah mengisikan sejumlah nilai ke dalam variable. Nilai yang dimasukkan haruslah sama dengan tipe data yang sudah dideklarasikan sebelumnya.
+
+```c
+char namaSaya[] = "Andi";
+printf("%s", namaSaya);
+```
+
+## Penulisan nama variable
+
+1. Jangan sampai melebihi 30 karakter, terkadang beberapa compiler tidak mensupport itu
+2. Jika nama variable lebih dari 2 kata maka gunakan huruf besar untuk kata berikutnya (tetap digabung), bisa juga menggunakan digit, underscore.
+3. Tidak boleh menggunakan reserved keyword
+
+## Variable scopes
+
+Variable memiliki scope atau ruang lingkup yang memiliki aksesibilitas tergantung dari penempatanya di dalam program atau function. Contoh variable hanya dapat berlaku disuatu function tertentu (_locally_) atau juga bisa suatu variable dapat berlaku/ dapat diakses oleh seluruh program (_globally_).
+
+### Jenis jenis scope
+
+#### Local scope
+
+Variable local ada saat function dijalankan. Ketika function telah dieksekusi variable lokal tidak berlaku lagi (_memory reclaimed_). Jadi variable lokal datang dan pergi selama program berjalan atau selama sebuah function dijalankan. Variable lokal tidak permanen di dalam memory komputer.
+
+#### Global scope
+
+Scope - Global variable dapat diakses oleh seluruh program di mana saja. Bahkan bisa mengakses variable di file yang berbeda. Semua variable global yang belum diinisialisasi memiliki nilai 0 sebagai nilai default. Variable global akan berlaku sampai program selesei dijalankan.
+
+# Printf
 
 ```c
 int main()
@@ -1063,7 +1118,16 @@ int main()- [Hello World!](#hello-world)
     - [Table Tipe Data Integer](#table-tipe-data-integer)
       - [Keterangan](#keterangan)
     - [Sizeof operator](#sizeof-operator)
-- [The power of variable & printf 🔥](#the-power-of-variable--printf-)
+- [Variable 🔖](#variable-)
+  - [Variable declaration dan definition](#variable-declaration-dan-definition)
+  - [Perbedaan declaration dan definition](#perbedaan-declaration-dan-definition)
+  - [Variable initialization](#variable-initialization)
+  - [Penulisan nama variable](#penulisan-nama-variable)
+  - [Variable scopes](#variable-scopes)
+    - [Jenis jenis scope](#jenis-jenis-scope)
+      - [Local scope](#local-scope)
+      - [Global scope](#global-scope)
+- [Printf](#printf)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
 - [Constant 🚧](#constant-)
