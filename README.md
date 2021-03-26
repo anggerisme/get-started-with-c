@@ -8,6 +8,8 @@
   - [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
 - [Data types 📦](#data-types-)
   - [Basic data type](#basic-data-type)
+    - [Table Tipe Data Integer](#table-tipe-data-integer)
+    - [Keterangan](#keterangan)
 - [The power of variable & printf 🔥](#the-power-of-variable--printf-)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
@@ -104,21 +106,29 @@ Deklarasi variable di C tidak terlepas dari jenis/tipe data seperti apa yang aka
 
 ## Basic data type
 
-###
-
-Tipe Integer
+### Table Tipe Data Integer
 
 | Tipe Data                   | Memory                       | Rentang                                              | Format specifier |
 | --------------------------- | ---------------------------- | ---------------------------------------------------- | ---------------- |
-| char                        | 1 byte                       | -128 to 127 or 0 to 255                              | %c               |
-| Unsigned char               | 1 byte                       | 0 t0 255                                             | %c               |
-| signed char                 | 1 byte                       | -128 to 127                                          | %c               |
-| int or signed int           | 2 or 4 byte                  | -32,768 to 32,767 or -2,147,483,648 to 2,147,483,647 | %d               |
-| unsigned int                | 2 or 4 bytes                 | 0 to 65,535 or 0 to 4,294,967,295                    | %i               |
-| signed short                | 2 byte                       | -32,768 to 32,767                                    | %hd              |
-| unsigned short              | 2 byte                       | 0 to 65,535                                          | %hu              |
-| long int or signed long int | 8 byte or 4 byte (32 bit OS) | -9223372036854775808 to 9223372036854775807          | %ld              |
-| unsigned long               | 8 bytes                      | 0 to 18446744073709551615                            | %lu              |
+| **char**                    | 1 byte                       | -128 to 127 or 0 to 255                              | `%c`             |
+| Unsigned char               | 1 byte                       | 0 t0 255                                             | `%c`             |
+| signed char                 | 1 byte                       | -128 to 127                                          | `%c`             |
+| **int** or signed int       | 2 or 4 byte                  | -32,768 to 32,767 or -2,147,483,648 to 2,147,483,647 | `%d`             |
+| unsigned int                | 2 or 4 bytes                 | 0 to 65,535 or 0 to 4,294,967,295                    | `%i`             |
+| signed **short**            | 2 byte                       | -32,768 to 32,767                                    | `%hd`            |
+| unsigned short              | 2 byte                       | 0 to 65,535                                          | `%hu`            |
+| **long** int / sig long int | 8 byte or 4 byte (32 bit OS) | -9223372036854775808 to 9223372036854775807          | `%ld`            |
+| unsigned long               | 8 bytes                      | 0 to 18446744073709551615                            | `%lu`            |
+
+### Keterangan
+
+Signed adalah penanda bahwa suatu tipe data **dapat menampung nilai negative** tapi mempunyai rentang **nilai yang kecil** pada bilangan positifnya
+Unsigned sebaliknya **tidak dapat menampung nilai negative** tapi mempunyai rentang nilai yang **lebih besar** pada bilangan positifnya.
+
+1. Char : Hanya menampung 1 karakter saja bisa angka bisa huruf, karena itulah char termasuk ke dalam tipe data integer.
+2. Short : Cukup ditulis `short` saja, C akan menganggap bahwa `short` yang dimaksud adalah `short int`.
+3. long : Juga termasuk `long` cukup ditulis long saja
+4. long long : cukup ditulis `long long`
 
 # The power of variable & printf 🔥
 
@@ -1033,6 +1043,8 @@ int main()- [Hello World!](#hello-world)
   - [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
 - [Data types 📦](#data-types-)
   - [Basic data type](#basic-data-type)
+    - [Table Tipe Data Integer](#table-tipe-data-integer)
+    - [Keterangan](#keterangan)
 - [The power of variable & printf 🔥](#the-power-of-variable--printf-)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
