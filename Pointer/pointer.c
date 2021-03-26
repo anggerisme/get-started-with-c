@@ -56,3 +56,4 @@ int main()
     printf("%d", *pAge); // Menyimpan value dari yang di-pointing oleh pAge yaitu age
     return 0;
 }
+
