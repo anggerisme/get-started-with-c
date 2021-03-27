@@ -202,6 +202,76 @@ Variable local ada saat function dijalankan. Ketika function telah dieksekusi va
 
 Scope - Global variable dapat diakses oleh seluruh program di mana saja. Bahkan bisa mengakses variable di file yang berbeda. Semua variable global yang belum diinisialisasi memiliki nilai 0 sebagai nilai default. Variable global akan berlaku sampai program selesei dijalankan.
 
+## Storage classes in C
+
+Storage classes di C merepresentasikan visibilitas dan lokasi dari suatu variable, memberitahukan dari bagian mana suatu kode dapat diakses. Berikut ini merupakan cakupan fungsi dari _storage classes_ :
+
+1. Variable scope
+2. Lokasi dimana variable di simpan
+3. Inisialisasi value dari variable
+4. Lifetime-dari suatu variable.
+5. Siapa yang dapat mengakses variable
+
+Dibawah ini merupakan 4 tipe standard storage classes.
+
+| Storage      | Purpose                                                                                                                     |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| **auto**     | Default storage class                                                                                                       |
+| **extern**   | Global variable                                                                                                             |
+| **static**   | Local variable yang memiliki kapabilitas untuk mengembalikan nilai bahkan ketika kontrol dipindahkan ke pemanggilan fungsi. |
+| **register** | variable yang disimpan didalam register                                                                                     |
+
+Contoh
+
+```c
+void myFunction(void);
+
+int main()
+{
+    myFunction();
+    myFunction();
+    myFunction();
+    myFunction();
+    myFunction();
+
+    return 0;
+}
+
+void myFunction(void){
+    int count = 0;
+    count = count + 1;
+
+    printf("Print executed %d\n", count);
+}
+
+```
+
+Dari Kode diatas kita mengharapkan pengulangan dari 1 sampai 5 tapi yang terjadi adalah pengulangan 1 secara terus menerus. Mengapa begitu? karena
+variable count sudah tidak berlaku lagi seketika function sudah selesei dieksekusi. Untuk membuatnya tetap bisa berlaku kita harus meletakkanya di **variable global** agar variable tetap berlaku sampai program selesei dieksekusi.
+
+```c
+void myFunction(void);
+int count = 0;
+
+int main()
+{
+    myFunction();
+    ...
+}
+```
+
+Tapi ada cara yang lebih baik dari cara diatas untuk membuat variable tetap dapat diakses oleh suatu function tertentu juga _life-time_ dari variable tersebut akan berakhir ketika program dijalankan bukan pada saat function berakhir. Inilah fungsi dari _storage specifier_ dengan keyword `static`-nya.
+
+```c
+void myFunction(void){
+    static int count = 0;
+    count = count + 1;
+
+    printf("Print executed %d\n", count);
+}
+
+```
+
 # Printf
 
 ```c
