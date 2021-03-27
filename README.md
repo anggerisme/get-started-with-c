@@ -415,6 +415,8 @@ int main()
 }
 ```
 
+> angka yang dimasukkan user akan disimpan ke dalam variable `usia` menggunakan ampersand `&` yang berarti "_at the address of_"
+
 ### String
 
 ```c
@@ -444,6 +446,10 @@ int main()
     return 0;
 }
 ```
+
+### getchar()
+
+Jika kita ingin mendapatkan _single character_ dari keyboard yang user ketikkan dalam ASCII format maka gunakan function `getchar()`. `getchar()` tidak memerlukan argumen dan hanya mengembalikan nilai `int` yang berasal dari nilai ASCII ketika keyboard ditekan.
 
 # Build Simple Calculator 🧮
 
@@ -536,7 +542,7 @@ int main()
 
 ## void()
 
-`Void` Merupakan tipe data function yang ketika ia tidak dapat mengembalikan nilainya sendiri. Untuk mengembalikan nilai yang ada di dalamnya kita harus memanggilnya di dalam function yang lain
+`Void` Merupakan tipe data function yang ketika i**a tidak dapat mengembalikan nilainya sendiri**. Untuk mengembalikan nilai yang ada di dalamnya kita harus memanggilnya (namanya) di dalam function yang lain dengan memasukkan argumenya
 
 ```c
 int main()
