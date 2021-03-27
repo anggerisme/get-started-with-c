@@ -202,7 +202,7 @@ Variable local ada saat function dijalankan. Ketika function telah dieksekusi va
 
 Scope - Global variable dapat diakses oleh seluruh program di mana saja. Bahkan bisa mengakses variable di file yang berbeda. Semua variable global yang belum diinisialisasi memiliki nilai 0 sebagai nilai default. Variable global akan berlaku sampai program selesei dijalankan.
 
-## Storage classes in C
+## Storage classes in C 🔍
 
 Storage classes di C merepresentasikan visibilitas dan lokasi dari suatu variable, memberitahukan dari bagian mana suatu kode dapat diakses. Berikut ini merupakan cakupan fungsi dari _storage classes_ :
 
