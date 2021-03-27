@@ -272,6 +272,48 @@ void myFunction(void){
 
 ```
 
+### Use case `static`
+
+Dengan `static` kita dapat mengatur visibilitas dari suatu variable agar bisa kita membuatnya private terhadap suatu function atau file tertentu, karena secara default C akan menganggap semua variable yang dideklarasikan secara global bisa diakses dari mana saja bahkan berbeda file dalam satu project. Dalam kasus ini kita akan membuat beberapa file yang berbeda dari satu project untuk mengetahui cara kerja `static` .
+
+#### File 1 - Main1.c
+
+```c
+// ----- Prototype function dari file 2 -----
+void files_1();
+// ----- variable global -----
+int mainPrivateData;
+int main(){
+    mainPrivateData = 100;
+    printf("mainPrivateData : %d", mainPrivateData);
+
+    files_1();
+    printf("mainPrivateData : %d", mainPrivateData);
+
+    return 0;
+}
+```
+
+#### File 2 - Main2.c
+
+```c
+extern int mainPrivateData;
+
+void files_1(){
+    mainPrivateData = 900;
+}
+```
+
+> File 2 masih bisa mengakses variable `mainPrivateData` karena memang secara default variable yang dideklarasikan secara global bisa diakses oleh siapa saja. Jadi untuk membuatnya private terhadap file lain kita gunakan keyword `static`
+
+```c
+static int mainPrivateData;
+int main()
+{
+    .....
+}
+```
+
 # Printf
 
 ```c
