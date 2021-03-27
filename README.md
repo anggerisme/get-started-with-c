@@ -1124,7 +1124,7 @@ int main()
 
 # Pointer ➡️
 
-Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang menyimpan lokasi memory dari variable lainya. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya.
+Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang menyimpan lokasi memory dari variable lainya. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya. Sama dengan variable lainya yang berfungsi untuk memanipulasi suatu value, untuk memanipulasi suatu alamat memory(pointer) kita perlu membuat pointer variable
 C menggunakan pointers dengan 3 cara :
 
 1. Untuk membuat **dynamic data structures** - _data structure_ dibuat dari beberapa block memory yang dialokasikan dari memory heap saat _run-time_
@@ -1187,4 +1187,30 @@ int main()
 }
 ```
 
-> & -> %p : Digunakan untuk mengakses alamat memory | %d : Digunakan untuk deferencing/mengakses value dari suatu alamat memory\*/
+> `&` -> %p : Digunakan untuk mengakses alamat memory | `*` : Digunakan untuk deferencing/mengakses value dari suatu alamat memory
+
+```c
+char *pAddress = &data; // Mengambil alamat memory
+char value = *pAddress; // // Deferencing/mengambil value dari alamat memory
+```
+
+Kita bisa meng-overwrite nilia/value yang sebelumnya sudah ada di suatu variable dengan menggunakan pointer.
+
+```c
+int main()
+{
+    // --- Nilai awal ---
+    char data = 127;
+    char *pAddress = &data;
+    printf("Value : %d\n", data);
+    printf("Alamat : %p\n", &data);
+    // --- Deferencing nilai pada alamat memory ---
+    char value = *pAddress;
+    printf("Value : %d\n", value);
+    // --- Mengisi ulang nilai ---
+    *pAddress = 65;
+    printf("Value : %d\n", data);
+
+    return 0;
+}
+```
