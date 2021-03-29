@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # Table of content
 
 <details>
@@ -23,6 +25,10 @@
 - [Storage classes in C 📦](#storage-classes-in-c-)
   - [Syntax](#syntax)
   - [Types of Storage](#types-of-storage)
+  - [Storage classes in C 🔍](#storage-classes-in-c--1)
+    - [Use case `static`](#use-case-static)
+      - [File 1 - Main1.c](#file-1---main1c)
+      - [File 2 - Main2.c](#file-2---main2c)
 - [Printf](#printf)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
@@ -31,7 +37,9 @@
   - [Scanf()](#scanf)
     - [Angka](#angka)
     - [String](#string)
-  - [fgets](#fgets)
+  - [fgets()](#fgets)
+  - [getchar()](#getchar)
+  - [buffer in C](#buffer-in-c)
 - [Build Simple Calculator 🧮](#build-simple-calculator-)
 - [Arrays 🅰️](#arrays-️)
 - [Functions 🌟](#functions-)
@@ -79,6 +87,10 @@
   - [Deferencing Pointers 🏹](#deferencing-pointers-)
 
 </details>
+
+=======
+
+> > > > > > > d0afdc208fad2a0992640847000d4726a4609f38
 
 # Hello World! 👋
 
@@ -206,6 +218,8 @@ Variable local ada saat function dijalankan. Ketika function telah dieksekusi va
 
 Scope - Global variable dapat diakses oleh seluruh program di mana saja. Bahkan bisa mengakses variable di file yang berbeda. Semua variable global yang belum diinisialisasi memiliki nilai 0 sebagai nilai default. Variable global akan berlaku sampai program selesei dijalankan.
 
+<<<<<<< HEAD
+
 # Storage classes in C 📦
 
 Bertujuan untuk memberitahu compiler dimana akan menyimpan variable, Bagaimana menyimpan variable, Scope variable, Visibilitas dari variable atau function, _life-time_ dari variable.
@@ -215,6 +229,122 @@ Bertujuan untuk memberitahu compiler dimana akan menyimpan variable, Bagaimana m
 storage_specifier_data_type variable_name;
 
 ## Types of Storage
+
+=======
+
+## Storage classes in C 🔍
+
+Storage classes di C merepresentasikan visibilitas dan lokasi dari suatu variable, memberitahukan dari bagian mana suatu kode dapat diakses. Berikut ini merupakan cakupan fungsi dari _storage classes_ :
+
+1. Variable scope
+2. Lokasi dimana variable di simpan
+3. Inisialisasi value dari variable
+4. Lifetime-dari suatu variable.
+5. Siapa yang dapat mengakses variable
+
+Dibawah ini merupakan 4 tipe standard storage classes.
+
+| Storage      | Purpose                                                                                                                     |
+| ------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| **auto**     | Default storage class                                                                                                       |
+| **extern**   | Global variable                                                                                                             |
+| **static**   | Local variable yang memiliki kapabilitas untuk mengembalikan nilai bahkan ketika kontrol dipindahkan ke pemanggilan fungsi. |
+| **register** | variable yang disimpan didalam register                                                                                     |
+
+Contoh
+
+```c
+void myFunction(void);
+
+int main()
+{
+    myFunction();
+    myFunction();
+    myFunction();
+    myFunction();
+    myFunction();
+
+    return 0;
+}
+
+void myFunction(void){
+    int count = 0;
+    count = count + 1;
+
+    printf("Print executed %d\n", count);
+}
+
+```
+
+Dari Kode diatas kita mengharapkan pengulangan dari 1 sampai 5 tapi yang terjadi adalah pengulangan 1 secara terus menerus. Mengapa begitu? karena
+variable count sudah tidak berlaku lagi seketika function sudah selesei dieksekusi. Untuk membuatnya tetap bisa berlaku kita harus meletakkanya di **variable global** agar variable tetap berlaku sampai program selesei dieksekusi.
+
+```c
+void myFunction(void);
+int count = 0;
+
+int main()
+{
+    myFunction();
+    ...
+}
+```
+
+Tapi ada cara yang lebih baik dari cara diatas untuk membuat variable tetap dapat diakses oleh suatu function tertentu juga _life-time_ dari variable tersebut akan berakhir ketika program dijalankan bukan pada saat function berakhir. Inilah fungsi dari _storage specifier_ dengan keyword `static`-nya.
+
+```c
+void myFunction(void){
+    static int count = 0;
+    count = count + 1;
+
+    printf("Print executed %d\n", count);
+}
+
+```
+
+### Use case `static`
+
+Dengan `static` kita dapat mengatur visibilitas dari suatu variable agar bisa kita membuatnya private terhadap suatu function atau file tertentu, karena secara default C akan menganggap semua variable yang dideklarasikan secara global bisa diakses dari mana saja bahkan berbeda file dalam satu project. Dalam kasus ini kita akan membuat beberapa file yang berbeda dari satu project untuk mengetahui cara kerja `static` .
+
+#### File 1 - Main1.c
+
+```c
+// ----- Prototype function dari file 2 -----
+void files_1();
+// ----- variable global -----
+int mainPrivateData;
+int main(){
+    mainPrivateData = 100;
+    printf("mainPrivateData : %d", mainPrivateData);
+
+    files_1();
+    printf("mainPrivateData : %d", mainPrivateData);
+
+    return 0;
+}
+```
+
+#### File 2 - Main2.c
+
+```c
+extern int mainPrivateData;
+
+void files_1(){
+    mainPrivateData = 900;
+}
+```
+
+> File 2 masih bisa mengakses variable `mainPrivateData` karena memang secara default variable yang dideklarasikan secara global bisa diakses oleh siapa saja. Jadi untuk membuatnya private terhadap file lain kita gunakan keyword `static`
+
+```c
+static int mainPrivateData;
+int main()
+{
+    .....
+}
+```
+
+> > > > > > > d0afdc208fad2a0992640847000d4726a4609f38
 
 # Printf
 
@@ -317,6 +447,14 @@ int main()
 }
 ```
 
+> angka yang dimasukkan user akan disimpan ke dalam variable `usia` menggunakan ampersand `&` yang berarti "_at the address of_"
+
+Menerima input lebih dari 1 inputan.
+
+```c
+scanf("%f, %f, %f", number1, number2, number3);
+```
+
 ### String
 
 ```c
@@ -332,7 +470,7 @@ int main()
 
 > Kita bisa gunakan function `scanf()` untuk memperoleh data dari user, tetapi hanya terbatas pada karakter string pertama. Jika sebuah string terpisahkan dengan spasi maka itu dianggap terpisah.
 
-## fgets
+## fgets()
 
 `fgets()` akan mengambil seluruh string yang ada di suatu inputan
 
@@ -346,6 +484,14 @@ int main()
     return 0;
 }
 ```
+
+## getchar()
+
+Jika kita ingin mendapatkan _single character_ dari keyboard yang user ketikkan dalam ASCII format maka gunakan function `getchar()`. `getchar()` tidak memerlukan argumen dan hanya mengembalikan nilai `int` yang berasal dari nilai ASCII ketika keyboard ditekan.
+
+## buffer in C
+
+**buffer** adalah tempat penyimpanan sementara untuk menyimpan perintah input dan output. Semua perintah input dan output tertahan buffer OS. C menggunakan buffer untuk mengeluarkan atau memasukkan variable. Buffer menyimpan variable yang seharusnya diambil(input) atau dikirim (output) dari program. Buffer perlu dibersihkan sebelum masukan(input) selanjutnya di ambil.
 
 # Build Simple Calculator 🧮
 
@@ -438,7 +584,7 @@ int main()
 
 ## void()
 
-`Void` Merupakan tipe data function yang ketika ia tidak dapat mengembalikan nilainya sendiri. Untuk mengembalikan nilai yang ada di dalamnya kita harus memanggilnya di dalam function yang lain
+`Void` Merupakan tipe data function yang ketika i**a tidak dapat mengembalikan nilainya sendiri**. Untuk mengembalikan nilai yang ada di dalamnya kita harus memanggilnya (namanya) di dalam function yang lain dengan memasukkan argumenya
 
 ```c
 int main()
@@ -1088,9 +1234,8 @@ int main()
 
 # Pointer ➡️
 
-Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang **menyimpan lokasi memory dari variable lainya**. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya.
-
-C akan mengaklokasikan 8 byte memory untuk menyimpan variable bertipe data pointer **terlepas** dari tipe data apa yang digunakan.
+<<<<<<< HEAD
+Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang **menyimpan lokasi memory dari variable lainya**. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya. C akan mengaklokasikan 8 byte memory untuk menyimpan variable bertipe data pointer **terlepas** dari tipe data apa yang digunakan.
 
 ## Syntax
 
@@ -1201,4 +1346,30 @@ int main()
 }
 ```
 
-> & -> %p : Digunakan untuk mengakses alamat memory | %d : Digunakan untuk deferencing/mengakses value dari suatu alamat memory\*/
+> `&` -> %p : Digunakan untuk mengakses alamat memory | `*` : Digunakan untuk deferencing/mengakses value dari suatu alamat memory
+
+```c
+char *pAddress = &data; // Mengambil alamat memory
+char value = *pAddress; // // Deferencing/mengambil value dari alamat memory
+```
+
+Kita bisa meng-overwrite nilia/value yang sebelumnya sudah ada di suatu variable dengan menggunakan pointer.
+
+```c
+int main()
+{
+    // --- Nilai awal ---
+    char data = 127;
+    char *pAddress = &data;
+    printf("Value : %d\n", data);
+    printf("Alamat : %p\n", &data);
+    // --- Deferencing nilai pada alamat memory ---
+    char value = *pAddress;
+    printf("Value : %d\n", value);
+    // --- Mengisi ulang nilai ---
+    *pAddress = 65;
+    printf("Value : %d\n", data);
+
+    return 0;
+}
+```
