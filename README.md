@@ -1,97 +1,5 @@
 <<<<<<< HEAD
 
-# Table of content
-
-<details>
-    <summary> Click to expand! </summary>
-
-- [Table of content](#table-of-content)
-- [Hello World! 👋](#hello-world-)
-  - [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
-- [Data types 📦](#data-types-)
-  - [Basic data type](#basic-data-type)
-    - [Table Tipe Data Integer](#table-tipe-data-integer)
-      - [Keterangan](#keterangan)
-    - [Sizeof operator](#sizeof-operator)
-- [Variable 🔖](#variable-)
-  - [Variable declaration dan definition](#variable-declaration-dan-definition)
-  - [Perbedaan declaration dan definition](#perbedaan-declaration-dan-definition)
-  - [Variable initialization](#variable-initialization)
-  - [Penulisan nama variable](#penulisan-nama-variable)
-  - [Variable scopes](#variable-scopes)
-    - [Jenis jenis scope](#jenis-jenis-scope)
-      - [Local scope](#local-scope)
-      - [Global scope](#global-scope)
-- [Storage classes in C 📦](#storage-classes-in-c-)
-  - [Syntax](#syntax)
-  - [Types of Storage](#types-of-storage)
-  - [Storage classes in C 🔍](#storage-classes-in-c--1)
-    - [Use case `static`](#use-case-static)
-      - [File 1 - Main1.c](#file-1---main1c)
-      - [File 2 - Main2.c](#file-2---main2c)
-- [Printf](#printf)
-- [Working with number 🔢](#working-with-number-)
-  - [Built in function for number in C](#built-in-function-for-number-in-c)
-- [Constant 🚧](#constant-)
-- [Getting user input 🔠](#getting-user-input-)
-  - [Scanf()](#scanf)
-    - [Angka](#angka)
-    - [String](#string)
-  - [fgets()](#fgets)
-  - [getchar()](#getchar)
-  - [buffer in C](#buffer-in-c)
-- [Build Simple Calculator 🧮](#build-simple-calculator-)
-- [Arrays 🅰️](#arrays-️)
-- [Functions 🌟](#functions-)
-  - [main()](#main)
-  - [void()](#void)
-- [Return statments](#return-statments)
-- [If statements 🔁](#if-statements-)
-  - [if](#if)
-  - [if else](#if-else)
-  - [if else-if else](#if-else-if-else)
-- [Build a Calculator 2 🧮](#build-a-calculator-2-)
-  - [Create variable to store input from user](#create-variable-to-store-input-from-user)
-  - [Getting input from user](#getting-input-from-user)
-  - [Conditional statement](#conditional-statement)
-- [Switch Statements 🔁](#switch-statements-)
-  - [Ketentuan](#ketentuan)
-  - [Penulisan syntax](#penulisan-syntax)
-- [Struct 📰](#struct-)
-  - [Deklarasi pada struct](#deklarasi-pada-struct)
-  - [Pembuatan variable struct](#pembuatan-variable-struct)
-    - [Cara 1](#cara-1)
-    - [Cara 2](#cara-2)
-  - [Cara Mengakses element struct](#cara-mengakses-element-struct)
-- [looping 🔁](#looping-)
-  - [While loop](#while-loop)
-  - [Do while](#do-while)
-  - [Build the guess my number game! #1 🃏](#build-the-guess-my-number-game-1-)
-    - [Solusi](#solusi)
-      - [1. Mendefinisikan variable untuk menampung nilai `guess` dan `secretNumber`.](#1-mendefinisikan-variable-untuk-menampung-nilai-guess-dan-secretnumber)
-      - [2. Membuat pengkondisian while (guess!= secretNumber)](#2-membuat-pengkondisian-while-guess-secretnumber)
-  - [Build the guess my number game! #2 🃏](#build-the-guess-my-number-game-2-)
-    - [Solusi](#solusi-1)
-      - [Membuat variable untuk fitur baru](#membuat-variable-untuk-fitur-baru)
-      - [Menentukan kondisi menggunakan if untuk menghitung jumlah tebakan](#menentukan-kondisi-menggunakan-if-untuk-menghitung-jumlah-tebakan)
-      - [Menambahkan 2 kondisi di `while` yaitu guess != secretNumber && outOfGuess == 1](#menambahkan-2-kondisi-di-while-yaitu-guess--secretnumber--outofguess--1)
-      - [Menambahkan kondisi jika `outOfGuess` == 1 yang berarti kalah, dan selain itu (outOfGuess == 0) maka menang](#menambahkan-kondisi-jika-outofguess--1-yang-berarti-kalah-dan-selain-itu-outofguess--0-maka-menang)
-      - [Final Code](#final-code)
-  - [For Loop](#for-loop)
-    - [Indexing arrays using for loop](#indexing-arrays-using-for-loop)
-  - [2D Arrays & Nested Loops 🐣](#2d-arrays--nested-loops-)
-- [Memory Addressing 💾](#memory-addressing-)
-  - [Menampilkan lokasi memory](#menampilkan-lokasi-memory)
-- [Pointer ➡️](#pointer-️)
-  - [Syntax](#syntax-1)
-  - [Deferencing Pointers 🏹](#deferencing-pointers-)
-
-</details>
-
-=======
-
-> > > > > > > d0afdc208fad2a0992640847000d4726a4609f38
-
 # Hello World! 👋
 
 ```c
@@ -218,20 +126,6 @@ Variable local ada saat function dijalankan. Ketika function telah dieksekusi va
 
 Scope - Global variable dapat diakses oleh seluruh program di mana saja. Bahkan bisa mengakses variable di file yang berbeda. Semua variable global yang belum diinisialisasi memiliki nilai 0 sebagai nilai default. Variable global akan berlaku sampai program selesei dijalankan.
 
-<<<<<<< HEAD
-
-# Storage classes in C 📦
-
-Bertujuan untuk memberitahu compiler dimana akan menyimpan variable, Bagaimana menyimpan variable, Scope variable, Visibilitas dari variable atau function, _life-time_ dari variable.
-
-## Syntax
-
-storage_specifier_data_type variable_name;
-
-## Types of Storage
-
-=======
-
 ## Storage classes in C 🔍
 
 Storage classes di C merepresentasikan visibilitas dan lokasi dari suatu variable, memberitahukan dari bagian mana suatu kode dapat diakses. Berikut ini merupakan cakupan fungsi dari _storage classes_ :
@@ -343,8 +237,6 @@ int main()
     .....
 }
 ```
-
-> > > > > > > d0afdc208fad2a0992640847000d4726a4609f38
 
 # Printf
 
