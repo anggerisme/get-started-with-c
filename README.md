@@ -20,6 +20,9 @@
     - [Jenis jenis scope](#jenis-jenis-scope)
       - [Local scope](#local-scope)
       - [Global scope](#global-scope)
+- [Storage classes in C 📦](#storage-classes-in-c-)
+  - [Syntax](#syntax)
+  - [Types of Storage](#types-of-storage)
 - [Printf](#printf)
 - [Working with number 🔢](#working-with-number-)
   - [Built in function for number in C](#built-in-function-for-number-in-c)
@@ -72,6 +75,7 @@
 - [Memory Addressing 💾](#memory-addressing-)
   - [Menampilkan lokasi memory](#menampilkan-lokasi-memory)
 - [Pointer ➡️](#pointer-️)
+  - [Syntax](#syntax-1)
   - [Deferencing Pointers 🏹](#deferencing-pointers-)
 
 </details>
@@ -201,6 +205,16 @@ Variable local ada saat function dijalankan. Ketika function telah dieksekusi va
 #### Global scope
 
 Scope - Global variable dapat diakses oleh seluruh program di mana saja. Bahkan bisa mengakses variable di file yang berbeda. Semua variable global yang belum diinisialisasi memiliki nilai 0 sebagai nilai default. Variable global akan berlaku sampai program selesei dijalankan.
+
+# Storage classes in C 📦
+
+Bertujuan untuk memberitahu compiler dimana akan menyimpan variable, Bagaimana menyimpan variable, Scope variable, Visibilitas dari variable atau function, _life-time_ dari variable.
+
+## Syntax
+
+storage_specifier_data_type variable_name;
+
+## Types of Storage
 
 # Printf
 
@@ -1074,112 +1088,92 @@ int main()
 
 # Pointer ➡️
 
-Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang menyimpan lokasi memory dari variable lainya. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya.
-C menggunakan pointers dengan 3 cara :
+Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang **menyimpan lokasi memory dari variable lainya**. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya.
 
-1. Untuk membuat **dynamic data structures** - _data structure_ dibuat dari beberapa block memory yang dialokasikan dari memory heap saat _run-time_
-2. C menggunakan pointers untuk meng*handle* **variable parameters** yang dimasukkan ke functions
-3. Pointers di C bisa kita manfaatkan untuk mengakses informasi/nilai yang disimpan dalam suatu arrays. Disana ada hubungan yang erat antara arrays dan pointers.
+C akan mengaklokasikan 8 byte memory untuk menyimpan variable bertipe data pointer **terlepas** dari tipe data apa yang digunakan.
+
+## Syntax
+
+Penulisan pointers dapat dilakukan sebagai berikut
 
 ```c
-#include <stdio.h>
+int a;
+int *b;
+b = &a;
+```
 
+atau ditulis langsung
+
+```c
+int a;
+int *b = &a;
+```
+
+`*b` menyimpan memory dari `a` yang ditulis dengan tambahan symbol `&`. Jadi kita bisa dengan singkat simpulkan bahwa alamat pointer `*b` sama dengan alamat memory variable `a`. Mari kita buktikan
+
+```c
+int a;
+int b;
+int *b = &a;
+
+printf("alamat memory a %p", &a); // 0x7ffc5e8de754
+printf("alamat pointer *b %p", &*b); // 0x7ffc5e8de754
+
+return 0;
+
+```
+
+> Note : Alamat memory tiap tiap komputer akan berbeda-beda tergantung dari komputer masing masing
+
+Karena pointer `*b` memiliki alamat memory yang sama dengan alamat memory variable `a` maka kita bisa katakan bahwa nilai berapapun bisa kita masukkan ke _b (overwrite) setelah men-*deferencing* nilai `a` dengan `*`. Dan variable `b` hanya bisa diisi dengan nilai apapun jika kita menyertakan symbol _ (arterisk) disebelahnya agar C menganggap `b` mempunyai memory yang sama dengan `a`.
+
+```c
+int main(){
+    int i = 5;
+    int *a = &i; // alamat a = alamat i
+    int *b= &*a; // alamat b = alamat a
+    int *c = &*b; // alamat c = alamat b
+
+    *c = 10; // alamat i = alamat c
+
+    printf("%d", i);
+    return 0;
+
+
+}
+
+```
+
+> Kita dapat alamat memorynya - kita bisa ubah nilai didalmnya
+
+Seperti biasanya kita mendeklarasikan tipe data `int` untuk variable `i` dan `j` kemudian `int*p` ditujukan sebagai penanda bahwa ada variable yang bernama `p` untuk meminta compiler mendeklarasikanya sebagai pointer untuk tipe data integer. `*` mengindikasikan bahwa ada suatu variable yang dideklarasikan sebagai pointer. Jika kamu ingin mendeklarasikan suatu variable sebagai pointer maka gunakan (\*).
+
+`p = &i` artinya nilai `p` yang sebelumnya belum kita inisialisasi kita isi dengan alamat memory dari variable i. kenapa `p` bisa diisi dengan _memory address_? karena kita telah menambahkan `*` sebelumnya. Setelah `p` terisi dengan alamat memory `i` maka otomatis pointer yang sebelumnya di `p` kini juga ada di `i`
+
+`&` Dalam konteks pointer merupakan operator "**address-of**" yang mengembalikan alamat memory dari suatu operand. Operand disini ialah variable yang diberi & di depanya.
+
+```c
 int main()
 {
-    int i,j;
-    int *p;   /* a pointer to an integer */
-    p = &i;
-    *p=5;
-    j=i;
-    printf("%d %d %d\n", i, j, *p);
+    int a = 5;
+    int *b = &a; // Pointer b memiliki alamat memory yang sama dengan a
+
+    printf("a = %p\n", &a); // &a akan mengembalikan alamat yang di tempatinya, diawali dengan symbol &
+    printf("b = %p\n", b); // b adalah variable yang menyimpan alamat memory a
+    printf("*b = %p\n", &*b); // Alamat dari pointer *b memiliki alamat memory yang sama dengan a
+
     return 0;
 }
 ```
 
-> 5, 5, 5
-
-Seperti biasanya kita mendeklarasikan tipe data `int` untuk variable `i` dan `j` kemudian `int*p` ditujukan sebagai penanda bahwa ada variable yang bernama `p` untuk meminta compiler mendeklarasikanya sebagai pointer untuk tipe data integer. `*` mengindikasikan bahwa ada suatu variable yang dideklarasikan sebagai pointer. Jika kamu ingin mendeklarasikan suatu variable sebagai pointer maka gunakan (\*).
-
-`p = &i` artinya nilai `p` yang sebelumnya belum kita inisialisasi kita isi dengan alamat memory dari variable i. kenapa `p` bisa diisi dengan _memory address_? karena kita telah menambahkan \* sebelumnya. Setelah `p` terisi dengan alamat memory `i` maka otomatis pointer yang sebelumnya di `p` kini juga ada di `i`
-
-`&` Dalam konteks pointer merupakan operator "**address-of**" yang mengembalikan alamat memory dari suatu operand. Operand disini ialah variable yang diberi & di depanya.
+Yang perlu menjadi catatan disini adalah `*b` dan `b` adalah 2 variable yang berbeda. b hanya bisa digunakan untuk menyimpan alamat memory saja (karena sebelumnya menggunakan `*`)
 
 ## Deferencing Pointers 🏹
 
 _Deferencing_ digunakan untuk mengakses atau memanipulasi data yang terdapat di dalam suatu memory yang ditunjuk oleh pointer. (\*) (asterisk) digunakan bersamaan dengan pointer variable saat men-deferencing pointer variable.
 
 ```c
-int main()- [Hello World!](#hello-world)
-- [Table of content](#table-of-content)
-- [Hello World! 👋](#hello-world-)
-  - [Drawing cool shape! ⛰️](#drawing-cool-shape-️)
-- [Data types 📦](#data-types-)
-  - [Basic data type](#basic-data-type)
-    - [Table Tipe Data Integer](#table-tipe-data-integer)
-      - [Keterangan](#keterangan)
-    - [Sizeof operator](#sizeof-operator)
-- [Variable 🔖](#variable-)
-  - [Variable declaration dan definition](#variable-declaration-dan-definition)
-  - [Perbedaan declaration dan definition](#perbedaan-declaration-dan-definition)
-  - [Variable initialization](#variable-initialization)
-  - [Penulisan nama variable](#penulisan-nama-variable)
-  - [Variable scopes](#variable-scopes)
-    - [Jenis jenis scope](#jenis-jenis-scope)
-      - [Local scope](#local-scope)
-      - [Global scope](#global-scope)
-- [Printf](#printf)
-- [Working with number 🔢](#working-with-number-)
-  - [Built in function for number in C](#built-in-function-for-number-in-c)
-- [Constant 🚧](#constant-)
-- [Getting user input 🔠](#getting-user-input-)
-  - [Scanf()](#scanf)
-    - [Angka](#angka)
-    - [String](#string)
-  - [fgets](#fgets)
-- [Build Simple Calculator 🧮](#build-simple-calculator-)
-- [Arrays 🅰️](#arrays-️)
-- [Functions 🌟](#functions-)
-  - [main()](#main)
-  - [void()](#void)
-- [Return statments](#return-statments)
-- [If statements 🔁](#if-statements-)
-  - [if](#if)
-  - [if else](#if-else)
-  - [if else-if else](#if-else-if-else)
-- [Build a Calculator 2 🧮](#build-a-calculator-2-)
-  - [Create variable to store input from user](#create-variable-to-store-input-from-user)
-  - [Getting input from user](#getting-input-from-user)
-  - [Conditional statement](#conditional-statement)
-- [Switch Statements 🔁](#switch-statements-)
-  - [Ketentuan](#ketentuan)
-  - [Penulisan syntax](#penulisan-syntax)
-- [Struct 📰](#struct-)
-  - [Deklarasi pada struct](#deklarasi-pada-struct)
-  - [Pembuatan variable struct](#pembuatan-variable-struct)
-    - [Cara 1](#cara-1)
-    - [Cara 2](#cara-2)
-  - [Cara Mengakses element struct](#cara-mengakses-element-struct)
-- [looping 🔁](#looping-)
-  - [While loop](#while-loop)
-  - [Do while](#do-while)
-  - [Build the guess my number game! #1 🃏](#build-the-guess-my-number-game-1-)
-    - [Solusi](#solusi)
-      - [1. Mendefinisikan variable untuk menampung nilai `guess` dan `secretNumber`.](#1-mendefinisikan-variable-untuk-menampung-nilai-guess-dan-secretnumber)
-      - [2. Membuat pengkondisian while (guess!= secretNumber)](#2-membuat-pengkondisian-while-guess-secretnumber)
-  - [Build the guess my number game! #2 🃏](#build-the-guess-my-number-game-2-)
-    - [Solusi](#solusi-1)
-      - [Membuat variable untuk fitur baru](#membuat-variable-untuk-fitur-baru)
-      - [Menentukan kondisi menggunakan if untuk menghitung jumlah tebakan](#menentukan-kondisi-menggunakan-if-untuk-menghitung-jumlah-tebakan)
-      - [Menambahkan 2 kondisi di `while` yaitu guess != secretNumber && outOfGuess == 1](#menambahkan-2-kondisi-di-while-yaitu-guess--secretnumber--outofguess--1)
-      - [Menambahkan kondisi jika `outOfGuess` == 1 yang berarti kalah, dan selain itu (outOfGuess == 0) maka menang](#menambahkan-kondisi-jika-outofguess--1-yang-berarti-kalah-dan-selain-itu-outofguess--0-maka-menang)
-      - [Final Code](#final-code)
-  - [For Loop](#for-loop)
-    - [Indexing arrays using for loop](#indexing-arrays-using-for-loop)
-  - [2D Arrays & Nested Loops 🐣](#2d-arrays--nested-loops-)
-- [Memory Addressing 💾](#memory-addressing-)
-  - [Menampilkan lokasi memory](#menampilkan-lokasi-memory)
-- [Pointer ➡️](#pointer-️)
-  - [Deferencing Pointers 🏹](#deferencing-pointers-)
+int main()
 {
     int a = 1;
     int b;
