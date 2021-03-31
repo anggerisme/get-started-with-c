@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 # Hello World! 👋
 
 ```c
@@ -621,6 +619,18 @@ int main()
 return 0;
 }
 ```
+
+## Conditional Operator
+
+Conditional operator di C terdirid dari 3 operand, yaitu
+
+```c
+expression 1 ?  expression 2 : expression 3 // True -> exspression 2 di eksekusi
+expression 1 ?  expression 2 : expression 3 // false -> exspression 3 di eksekusi
+
+```
+
+> Exspression 1 menentukan perintah yang akan ditampilkan berdasarkan kondisi yang berada di ekspression 1
 
 # Build a Calculator 2 🧮
 
