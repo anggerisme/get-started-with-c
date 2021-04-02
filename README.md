@@ -1275,3 +1275,103 @@ int main()
     return 0;
 }
 ```
+
+# Bitwise Operator 🔢
+
+Ada 6 Jenis :
+
+1. Bitwise AND `&`
+2. Bitwise OR `|`
+3. Bitwise Left Shift `<<`
+4. Bitwise Right Shift `>>`
+5. Bitwise Not (Negation) `~`
+6. Bitwise XOR
+
+## Perbedaan AND Operator `&&` dan Bitwise Operator `&`
+
+`&&` adalah Operator Logika AND
+`&` adalah Operator Bitwise
+
+### && AND Operator
+
+```c
+char A  = 40;
+char B = 20;
+
+C = A&&B; // C = 1 Karena keduanya benar
+
+```
+
+### & Bitwise Operator
+
+Berbeda dengan perhitungan yang dilakukan operator AND, bitwise operator menghitungnya secara bit per bit jadi harus diterjemahkan terlebih dahulu sebelum di operasikan. Tetapi nanti pada saat mengoperasikanya tetap menggunakan konsep operator AND.
+
+````c
+char A = 40;
+char B = 20;
+-------------------------- &&
+C = A&B; //
+
+```c
+// Masing masing operand akan diterjemahkan ke dalam binary number
+char A = 40; // 00101000
+char B = 30; // 00011110
+-------------------------- &
+char C = 8; // 00001000 --> Mengoperasikanya tetap menggunakan operator logika AND
+````
+
+> Semua benar untuk menjadi benar
+
+### OR `||` Bitwise Operator
+
+Bitwise OR operator `||` juga berlaku sama menggunakan operator logika OR pada saat mengoperasikan satu persatu bit
+
+```c
+// Masing masing operand akan diterjemahkan ke dalam binary number
+char A = 40; // 00101000
+char B = 30; // 00011110
+-------------------------- |
+char C = 62; // 00111110 --> Mengoperasikanya tetap menggunakan operator logika ||
+```
+
+> Semua salah untuk menjadi salah
+
+### XOR `^` Bitwise Operator
+
+```c
+// Masing masing operand akan diterjemahkan ke dalam binary number
+char A = 40; // 00101000
+char B = 30; // 00011110
+-------------------------- ^
+char C = 54; // 00110110 --> Mengoperasikanya tetap menggunakan operator logika XOR
+```
+
+> Untuk Benar maka harus berbeda.
+
+### NOT (Negation) `~` Bitwise Operator
+
+```c
+// Operator NOT akan membalikkan nilai aslinya
+char A = 40
+char C = ~A; // -40
+```
+
+## Exercise
+
+```c
+int main()
+{
+    int a;
+    int b;
+    printf("Masukkan angka 1 : ");
+    scanf("%d", &a);
+    printf("Masukkan angka 2 : ");
+    scanf("%d", &b);
+    printf("OR : %d\n", a&b);
+    printf("OR : %d\n", a|b);
+    printf("XOR : %d\n", a^b);
+    printf("NOT : %d", ~a);
+
+    return 0;
+}
+```
