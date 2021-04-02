@@ -1285,14 +1285,14 @@ Ada 6 Jenis :
 3. Bitwise Left Shift `<<`
 4. Bitwise Right Shift `>>`
 5. Bitwise Not (Negation) `~`
-6. Bitwise XOR
+6. Bitwise XOR `^`
 
 ## Perbedaan AND Operator `&&` dan Bitwise Operator `&`
 
 `&&` adalah Operator Logika AND
 `&` adalah Operator Bitwise
 
-### && AND Operator
+### `&&` AND Operator
 
 ```c
 char A  = 40;
@@ -1302,7 +1302,7 @@ C = A&&B; // C = 1 Karena keduanya benar
 
 ```
 
-### & Bitwise Operator
+### `&` Bitwise Operator
 
 Berbeda dengan perhitungan yang dilakukan operator AND, bitwise operator menghitungnya secara bit per bit jadi harus diterjemahkan terlebih dahulu sebelum di operasikan. Tetapi nanti pada saat mengoperasikanya tetap menggunakan konsep operator AND.
 
@@ -1371,6 +1371,53 @@ int main()
     printf("OR : %d\n", a|b);
     printf("XOR : %d\n", a^b);
     printf("NOT : %d", ~a);
+
+    return 0;
+}
+```
+
+## Bit Masking
+
+Bitmasking adalah teknik dalam pemrograman untuk memanipulasi suatu bit dari satu set bit (byte) dengan menggunakan operand lain yang kita sebut mask. Teknik ini memungkinkan kita untuk mengubah bit tertentu misalnya 1 menjadi 0 atau sebaliknya. Biasanya untuk mengoperasikanya kita menggunakan operator AND `&&`
+
+## Check angka : ganjil atau genap?
+
+Kita dapat mengecheck suatu angka apakah angka itu ganjil atau genap dengan menggunakan teknik **bit-masking**. Dengan mentarget bit paling terakhir untuk kita manipulasi.
+
+```c
+int main()
+{
+    int a;
+
+    printf("Masukkan angka :");
+    scanf("%d",&a);
+
+    if(a & 1)
+        printf("%d adalah ganjil\n", a);
+    else
+        printf("%d adalah genap", a);
+
+    return 0;
+}
+```
+
+> Karena 1 adalah 00000001 maka ketika kita AND-kan dengan angka yang kita masukkan akan diketahui apakah bilangan itu genap atau ganjil. Jika bit paling belakang dari angka yang kita masukkan :
+> 1 maka 1 && 1 = 1 --> Ganjil
+> 0 maka 0 && 1 = 0 --> Genap
+
+## Mengubah nilai bit tertentu dalam byte
+
+Berbeda dengan sebelumnya, disini kita akan menggunakan operator OR `|` untuk memanipulasi suatu bit pada posisi/urutan tertentu. Disini kita akan memanipulasi bit ke 4 dan 7 dan mengubahnya menjadi 1
+
+```c
+int main()
+{
+    int a;
+    int b = 72; // 10010000
+
+    printf("masukkan angka : ");
+    scanf("%d", &a);
+    printf("%d", a|b);
 
     return 0;
 }
