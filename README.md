@@ -1136,7 +1136,6 @@ int main()
 
 # Pointer ➡️
 
-<<<<<<< HEAD
 Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang **menyimpan lokasi memory dari variable lainya**. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya. C akan mengaklokasikan 8 byte memory untuk menyimpan variable bertipe data pointer **terlepas** dari tipe data apa yang digunakan.
 
 ## Syntax
@@ -1380,7 +1379,7 @@ int main()
 
 Bitmasking adalah teknik dalam pemrograman untuk memanipulasi suatu bit dari satu set bit (byte) dengan menggunakan operand lain yang kita sebut mask. Teknik ini memungkinkan kita untuk mengubah bit tertentu misalnya 1 menjadi 0 atau sebaliknya. Biasanya untuk mengoperasikanya kita menggunakan operator AND `&&`
 
-## Check angka : ganjil atau genap?
+### Check angka : ganjil atau genap?
 
 Kita dapat mengecheck suatu angka apakah angka itu ganjil atau genap dengan menggunakan teknik **bit-masking**. Dengan mentarget bit paling terakhir untuk kita manipulasi.
 
@@ -1405,7 +1404,7 @@ int main()
 > 1 maka 1 && 1 = 1 --> Ganjil
 > 0 maka 0 && 1 = 0 --> Genap
 
-## Mengubah nilai bit tertentu dalam byte
+### Mengubah nilai bit tertentu dalam byte
 
 Berbeda dengan sebelumnya, disini kita akan menggunakan operator OR `|` untuk memanipulasi suatu bit pada posisi/urutan tertentu. Disini kita akan memanipulasi bit ke 4 dan 7 dan mengubahnya menjadi 1
 
@@ -1421,4 +1420,116 @@ int main()
 
     return 0;
 }
+```
+
+# Type Qualifiers in C
+
+_Type qualifiers_ adalah keyword yang digunakan untuk memodifikasi/menambahkan suatu sifat/property dari sebuah variable. Denganya kita dapat mengubah properti dari suatu variable. Di C ada 2 qualifiers yaitu :
+
+1. const
+2. Volatile
+
+## Const
+
+Const digunakan untuk membuat constant variable atau dengan kata lain menjadikan sebuah nilai hanya bisa di baca saja (_read-only_). Setelah suatu variable dibuat dengan const maka setelahnya kita tidak dapat memodifikasinya lagi. Ini berarti nilai yang ada di dalam variable tersebut bersifat **fixed** dan tidak bisa diisi kembali.
+
+### Syntax
+
+Penulisan const bisa ditulis setelah tipe data atau juga bisa ditulis sebelum tipe data
+
+```c
+int const a; // Lebih disarankan
+const int b;
+```
+
+> `int const a` lebih disarankan karena cara membacanya : variable a bernilai constant dari tipe data integer
+
+### Contoh
+
+```c
+int main()
+{
+    int a =1;
+    const int b = 2;
+    printf("Hello World");
+    b = 3;
+    return 0;
+}
+```
+
+> error: assignment of **read-only** variable 'b'
+
+Tapi apakah kita dapat memodifikasinya nanti sewaktu waktu walaupun sudah diberi keyword `const`? Bisa tapi menggunakan alamat memory untuk mengganti nilai dari variable const itu.
+
+```c
+int main()
+{
+    int a =1;
+    const int b = 2;
+    printf("Value b : %d\n", b);
+    int *ptrB = (int*)&b; // 2
+
+    *ptrB = 5;
+    printf("Value b : %d", b); // 5
+    return 0;
+}
+```
+
+### Penempatan const variable di memory
+
+Secara default, Variable local const akan disimpan di dalam memory RAM (Random Access Memory) dan Variable global const di ROM (Read-Only Memory) karena const membutuhkan memory yang bersifat volatile (tersimpan tanpa harus ada listrik ). const juga bisa disimpan di dalam RAM ketika program diinisialisasi
+
+### Penggunaan const
+
+1. Melindungi suatu variable/nilai agar tidak terjadi _re-assignment_
+2. Menambah _readibility_ dari program kita
+3.
+
+#### Constant data
+
+bisa digunakan sebagai constanta matematika, misalnya
+
+```c
+float const phi = 3.14;
+float const radius = 4;
+int const months = 12;
+```
+
+#### Modifiable pointer dan constant data
+
+Pointer data bersifat _modifiable _ tetapi data yang ditunjuknya bersifat Read-Only, jadi bisa dikatakan pointer menunjuk ke nilai yang sifatnya read-only
+
+```c
+int const *pData = (int*)&a;
+```
+
+> Dibaca : pointer pData _pointing to_ constant data dari tipe data integer (kanan ke kiri)
+
+Jadi kesimpulanya kita **bisa mengubah alamatnya** tapi tidak bisa mengubah nilainya karena constant
+
+#### Modifiable data and contant pointer
+
+Pointer pData bersifat read-only sedangkan nilainya bersifat modifiable, jadi bisa dikatakan read-only pointer pData _pointing to_ modifiable data.
+
+```c
+int* const pData = (int*)&a;
+
+// ---- not allowed ---
+pData = (int*)&b;
+pData = (int*)&c;
+
+// --- Alowed ---
+*pData = 30;
+*pData = 40;
+*pData = 50;
+```
+
+Ini diperlukan untuk melindungi suatu variable agar suatu pointer tidak berubah alamat memorynya
+
+#### Contant data and Constant Pointer
+
+Constant pData bersifat read-only begitu juga dengan pointer pData
+
+```c
+int const const *pData = (int*)&a;
 ```
