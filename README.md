@@ -785,7 +785,7 @@ int main()
 
 # Struct 📰
 
-Merupakan kumpulan dari berbagai tipe data (int, char, double, dll) yang disimpan dalam suatu struktur data baru `Struct`. `Struct` dapat digunakan untuk membuat banyak salinan yang datanya merujuk pada struct utama (parent)
+Merupakan **kumpulan dari berbagai tipe data** (int, char, double, dll) yang disimpan dalam suatu struktur data baru `Struct`. `Struct` dapat digunakan untuk membuat banyak salinan yang datanya merujuk pada struct utama (parent). Nama dari structure itu sendiri tidak memakan memory jadi hanya memberi nama saja pada suatu `struct`
 
 ## Deklarasi pada struct
 
@@ -861,7 +861,7 @@ Untuk mengakses element yang berada disuatu `struct` kita dapat menggunakan dot 
 struct Mahasiswa{
 
     int no1, no2;
-} mahasiswa1, mahasiswa2;
+} mahasiswa1, mahasiswa2; // salinan dibuat di awal setelah struct
 
 
 int main()
@@ -1533,3 +1533,34 @@ Constant pData bersifat read-only begitu juga dengan pointer pData
 ```c
 int const const *pData = (int*)&a;
 ```
+
+## Volatile
+
+Volatile adalah tipe qualifier di C yang digunaakn bersamaan dengan variable untuk menginstruksikan kepada compiler untuk tidak melakukan optimasi apapun pada operasi variable. Ini memberitahukan kepada compiler bahwa nilai dari suatu variable dapat berubah ubah kapanpun dengan ataupun tanpa _consent_ dari programmers. Jadi compiler akan mematikan optimasi read-write operations pada variable yang dideklarasikan menggunakan keyword volatile
+
+Berikut merupakan sifat dari volatile :
+
+1. Keyword Volatile tidak dapat menghapus memory assignment
+2. Tidak dapat menyimpan variable dalam register
+3. Nilai tidak dapat berubah dalam urutan penugasan (assignment)
+
+### Syntax
+
+```c
+volatile int a;
+int volatile a;
+```
+
+### Kapan menggunakan "Volatile"?
+
+Variable harus dideklarasikan menggunakan volatile ketika disana ada kemungkinan perubahan yang tak terduga pada nilai dari variable itu. Perubahan "yang tak diinginkan" itu terjadi di dalam code ataupun dari luar code (hardware)
+
+Berikut kemungkinan skenario yang terjadi :
+
+1. Memory-mapped peripheral registers of the microcontrollers
+2. Multiple tasks accessing global variable (read/write) in an RTOS multithreaded application
+3. When a global variable is used to share data between the main code and an ISR code
+
+# Structures in C
+
+Structure memungkinkan kita untuk mengkombinasikan data dari berbagai jenis tipe data.
