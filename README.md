@@ -419,25 +419,62 @@ int main()
 
 # Arrays 🅰️
 
-Kumpulan nilai dalam satu variable
+Kumpulan nilai dengan tipe data yang sama dalam satu variable.
+
+## Syntax
+
+```c
+// tipeData  namaVariable[banyaknya nilai];
+// --- Ditulis jumlah datanya ---
+char noIndukSiswa[10] = {1,2,3,4,5,6,7,8,9,10}
+// --- Tidak ditulis jumlah datanya ---
+char noIndukSiswa[] = {1,2,3,4,5,6,7,8,9,10}
+```
+
+`noIndukSiswa` merupakan _base pointer_ atau _reference_ atau _pointer_ dari 10 item/data dari tipe data `char`. jadi `noIndukSiswa` sama dengan `char*` (pointer). Tipe data dari 10 items tersebut di simpan dalam tipe data `char`.
+
+## Memory size
+
+Total memory yang dikonsumsi oleh Array sebesesar ukuran items masing masing x jumlah items tersebut. Kita ambil contoh diatas jika tipe datanya char = 1 byte x jumlah item = 100. Total memory = 100 bytes. Jadi ukuran memory Arrays tergantung dari tipe data dan jumlah data.
+
+## Contoh
+
+```c
+i
+```
 
 ```c
 int main()
 {
-    int number[] = {2,4,6,8,10,12,14};
-    printf("No : %d", number[]);
+    char noIndukSiswa1[5];
+    char noIndukSiswa2[5];
+    printf("Size : %d", sizeof(noIndukSiswa1)); // 5*1 byte (char) =  5 byte
+    printf("Size : %d", sizeof(noIndukSiswa2)); // 5*4 byte (int) = 20 byte
+
     return 0;
 }
 ```
 
-Reassigning value :
+## Mengakses Arrays
+
+Nama/variable dari suatu arrays menyimpan alamat dari seluruh data yang ada di dalamnya secara berurutan.
+
+### Variasi cara pengaksesan
+
+```c
+char noIndukSiswa[10] = {1,2,3,4,5,6,7,8,9,10};
+*(noIndukSiswa+1) = 3; // Pointer 1 + 1 sehingga pointer akan berpindah ke alamat memory kedua yaitu 2. Dari sinilah kita bisa mengubah nilainya
+printf("No induk siswa kedua : %d", noIndukSiswa[1]);// 3
+```
+
+Shorthand :
 
 ```c
 int main()
 {
     int number[] = {2, 4, 8, 16, 32, 64};
     number[0] = 10;
-    printf("No : %d", number[0]); //2
+    printf("No : %d", number[0]); //10
     return 0;
 }
 ```
@@ -455,7 +492,101 @@ int main()
 }
 ```
 
-> Jumlah nilai yang dapat ditambahkan di dalamnya adalah 3+1 dari jumlah yang ditentukan di parameter arrays
+### Mengakses seluruh nilai
+
+Melakukan indexing pada arrays dengan bantuan `for`
+
+```c
+int main()
+{
+    int noIndukSiswa[5] = {1,2,3,4,5};
+    for(int i =0; i<5; i++){
+        printf("No Induk Siswa : %d\n", noIndukSiswa[i]); // 1 2 3 4 5
+    }
+
+    return 0;
+}
+```
+
+Dengan bantuan `for` loop kita juga bisa mengubah nilai seluruh arrays menjadi seragam
+
+```c
+int main()
+{
+    int noIndukSiswa[5] = {1,2,3,4,5};
+    for(int i =0; i<5; i++){
+        noIndukSiswa[i] = 5;
+        printf("No Induk Siswa : %d\n", noIndukSiswa[i]); // 5 5 5 5 5
+    }
+
+    return 0;
+}
+```
+
+## Exercise
+
+### Passing Arrays to Function
+
+Membuat function dan menampilkan alamat memory dan no induk siswa
+
+```c
+void array_display(int *pArray, int jmlData); // Prototype
+int main()
+{
+    int noIndukSiswa[5] = {1,2,3,4,5};
+    int jmlData = sizeof(noIndukSiswa)/ sizeof(int);
+    // Calling function from other program
+    array_display(noIndukSiswa, jmlData);
+    return 0;
+}
+
+void array_display(int *pArray, int jmlData){
+    for(int i = 0; i<jmlData; i++){
+        printf("Alamat memory : %p untuk no Induk Siswa : %d\n", &*(pArray + i), *(pArray + i));
+    }
+}
+
+```
+
+Hasil
+
+```c
+Alamat memory : 0x7ffc5f2dc970 untuk no Induk Siswa : 1
+Alamat memory : 0x7ffc5f2dc974 untuk no Induk Siswa : 2
+Alamat memory : 0x7ffc5f2dc978 untuk no Induk Siswa : 3
+Alamat memory : 0x7ffc5f2dc97c untuk no Induk Siswa : 4
+Alamat memory : 0x7ffc5f2dc980 untuk no Induk Siswa : 5
+```
+
+### Menerima nilai arrays dari user
+
+```c
+// Prototype
+void arrayDisplay(int *pArray, int jmlData);
+int main()
+{
+    int noIndukSiswa[3];
+    noIndukSiswa[0];
+    noIndukSiswa[1];
+    noIndukSiswa[2];
+    printf("Masukkan No Induk Siswa \n");
+    // Meminta user memasukkan input untuk mengisi array
+    scanf("%d %d %d", &noIndukSiswa[0], &noIndukSiswa[1], &noIndukSiswa[2]);
+    // Untuk mencari banyaknya data/nilai dari suatu array
+    int jmlData = sizeof(noIndukSiswa)/sizeof(int);
+    // Passing arrays to another function - Menampilkan data
+    arrayDisplay(noIndukSiswa, jmlData);
+
+    return 0;
+}
+// *pArray untuk Deferencing nilai dari variable noIndukSiswa
+void arrayDisplay(int *pArray, int jmlData){
+    for(int i = 0; i<jmlData; i++){
+        printf("No Induk Mahasiswa ke %d : %d\n", i, pArray[i]);
+    }
+}
+
+```
 
 # Functions 🌟
 
@@ -869,6 +1000,25 @@ int main()
     mahasiswa1.no1 = 1;
     mahasiswa2.no2 = 2;
     printf("no1 : %d, no2 : %d\n", mahasiswa1.no1, mahasiswa2.no2);
+}
+```
+
+## Contoh lain
+
+```c
+struct carModel {
+    int carNumber;
+    int carPrice;
+    int carMaxSpeed;
+    float carWeight;
+};
+
+int main()
+{
+    struct carModel carBMW = {2021, 15000, 220, 1330}; // C89 Method. order is important
+    struct carModel carFord = {4031, 35000, 160, 1900.96};
+    return 0;
+    struct carModel carHonda = {.carNumber=2021, .carWeight=1330} // Order not important C99
 }
 ```
 
