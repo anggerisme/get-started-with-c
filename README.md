@@ -124,146 +124,66 @@ Variable local ada saat function dijalankan. Ketika function telah dieksekusi va
 
 Scope - Global variable dapat diakses oleh seluruh program di mana saja. Bahkan bisa mengakses variable di file yang berbeda. Semua variable global yang belum diinisialisasi memiliki nilai 0 sebagai nilai default. Variable global akan berlaku sampai program selesei dijalankan.
 
-## Storage classes in C 🔍
+# String
 
-Storage classes di C merepresentasikan visibilitas dan lokasi dari suatu variable, memberitahukan dari bagian mana suatu kode dapat diakses. Berikut ini merupakan cakupan fungsi dari _storage classes_ :
+String di `C` merupakan koleksi dari karakter (`char`), jadi untuk membuat string di `C` kita harus menggunaakn tipe data `char` yang disimpan di dalam arrays dan ditambahkan double quote (`""`)
 
-1. Variable scope
-2. Lokasi dimana variable di simpan
-3. Inisialisasi value dari variable
-4. Lifetime-dari suatu variable.
-5. Siapa yang dapat mengakses variable
-
-Dibawah ini merupakan 4 tipe standard storage classes.
-
-| Storage      | Purpose                                                                                                                     |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| **auto**     | Default storage class                                                                                                       |
-| **extern**   | Global variable                                                                                                             |
-| **static**   | Local variable yang memiliki kapabilitas untuk mengembalikan nilai bahkan ketika kontrol dipindahkan ke pemanggilan fungsi. |
-| **register** | variable yang disimpan didalam register                                                                                     |
-
-Contoh
+## Syntax
 
 ```c
-void myFunction(void);
-
 int main()
 {
-    myFunction();
-    myFunction();
-    myFunction();
-    myFunction();
-    myFunction();
-
-    return 0;
-}
-
-void myFunction(void){
-    int count = 0;
-    count = count + 1;
-
-    printf("Print executed %d\n", count);
-}
-
-```
-
-Dari Kode diatas kita mengharapkan pengulangan dari 1 sampai 5 tapi yang terjadi adalah pengulangan 1 secara terus menerus. Mengapa begitu? karena
-variable count sudah tidak berlaku lagi seketika function sudah selesei dieksekusi. Untuk membuatnya tetap bisa berlaku kita harus meletakkanya di **variable global** agar variable tetap berlaku sampai program selesei dieksekusi.
-
-```c
-void myFunction(void);
-int count = 0;
-
-int main()
-{
-    myFunction();
-    ...
-}
-```
-
-Tapi ada cara yang lebih baik dari cara diatas untuk membuat variable tetap dapat diakses oleh suatu function tertentu juga _life-time_ dari variable tersebut akan berakhir ketika program dijalankan bukan pada saat function berakhir. Inilah fungsi dari _storage specifier_ dengan keyword `static`-nya.
-
-```c
-void myFunction(void){
-    static int count = 0;
-    count = count + 1;
-
-    printf("Print executed %d\n", count);
-}
-
-```
-
-### Use case `static`
-
-Dengan `static` kita dapat mengatur visibilitas dari suatu variable agar bisa kita membuatnya private terhadap suatu function atau file tertentu, karena secara default C akan menganggap semua variable yang dideklarasikan secara global bisa diakses dari mana saja bahkan berbeda file dalam satu project. Dalam kasus ini kita akan membuat beberapa file yang berbeda dari satu project untuk mengetahui cara kerja `static` .
-
-#### File 1 - Main1.c
-
-```c
-// ----- Prototype function dari file 2 -----
-void files_1();
-// ----- variable global -----
-int mainPrivateData;
-int main(){
-    mainPrivateData = 100;
-    printf("mainPrivateData : %d", mainPrivateData);
-
-    files_1();
-    printf("mainPrivateData : %d", mainPrivateData);
+    char hello[5] = "Hello";
+    printf("%s", hello);
 
     return 0;
 }
 ```
 
-#### File 2 - Main2.c
+String dalam array sebenarnya adalah _one-dimensional arrays of characters terminated by a null characters '\0'_. Jadi di akhir sebuah string terdapat karakter null yang ditulis `\0` untuk mengakhiri sebuah string. karakter null ini otomatis di berikan oleh compiler saat kita membuat arrays string.
 
 ```c
-extern int mainPrivateData;
-
-void files_1(){
-    mainPrivateData = 900;
+int main () {
+   char hello[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+   printf("%s\n", hello ); // hello - \0 tidak akan ditampilkan
+   return 0;
 }
 ```
 
-> File 2 masih bisa mengakses variable `mainPrivateData` karena memang secara default variable yang dideklarasikan secara global bisa diakses oleh siapa saja. Jadi untuk membuatnya private terhadap file lain kita gunakan keyword `static`
+Jadi penulisan string ada 2 cara
 
 ```c
-static int mainPrivateData;
-int main()
-{
-    .....
-}
+   char hello[6] = {'H', 'e', 'l', 'l', 'o', '\0'};
+   char hello[5] = {"Hello"};
 ```
 
-# Printf
+> keduanya sama persis
+
+## Perbedaan dengan `char`
+
+Meskipun string menggunakan tipe data `char` tetapi string sama sekali berbeda dengan `char`. Salah satu cirinya dalam penggunaan tanda petik
 
 ```c
-int main()
-{
-    int umur = 20;
-    char nama1[] = "Budi";
-    char nama2[] = "Andi";
-    float ipk = 3.7532f;
-    double phi = 3.14159265358979323846;
-    printf("%s berumur %i\n", nama1, umur);
-    printf("%s berumur %i\n", nama2, umur+1);
-    printf("Nilai ipk %s adalah %.3f \n", nama1, ipk); // %.3 Untuk menentukan nilai di belakang koma
-    printf("Nilai phi adalah %.10f \n", phi);
-    printf("%s %s %i\n", nama1, "berumur", umur+1);
-}
+char hello = "hello"// string
+char hello = 'A'// char
 ```
 
-> `$` digunakan sebagai _placeholder_ untuk menaruh variable yang sudah dideklarasikan diawal. `$d` untuk angka dan `$s`.
+Dalam _memory consumption_ pun juga berbeda string disimpan bersamaan dengan null character sedangkan char berdiri sendiri.
 
-hasil :
+## Memory allocation
+
+C akan mengalokasikan memory untuk string tergantung dari cara penulisan.
 
 ```c
-Budi berumur 20
-Andi berumur 21
-Nilai ipk Budi adalah 3.753
-Nilai phi adalah 3.1415926536
-Budi berumur 21
+char hello[10] = "Hello"; // 10 bytes - Setelahnya akan diisi otomatis 00000
+char hello[] = "Hello"; // Dinamycally - 6 byte (menyesuaikan jumlah data) + null characters
+```
+
+Untuk panjang string (_string-length_) akan sama saja, untuk mengetahui panjang string kita gunakan built in function `strlen()` **mengecualikan** null character
+
+```c
+char hello[10] = "Hello"; //5
+char hello[] = "Hello"; // 5
 ```
 
 # Working with number 🔢
@@ -1711,6 +1631,157 @@ Berikut kemungkinan skenario yang terjadi :
 2. Multiple tasks accessing global variable (read/write) in an RTOS multithreaded application
 3. When a global variable is used to share data between the main code and an ISR code
 
-# Structures in C
+# Bits and Binary
 
-Structure memungkinkan kita untuk mengkombinasikan data dari berbagai jenis tipe data.
+```c
+int convertBinaryToDecimal(long long n);
+int main()
+{
+    long long n;
+    int result;
+
+    printf("Masukkan angka binary :");
+    scanf("%lld", &n);
+
+    result = convertBinaryToDecimal(n);
+
+    printf("Binary : %lld \nDesimal : %d", n, result);
+
+
+    return 0;
+}
+
+int convertBinaryToDecimal(long long n) {
+    int decimalNumber = 0, i = 0, sisa;
+
+    while(n != 0) {
+        sisa = n % 10;
+        n = n /10;
+        decimalNumber += sisa*pow(2, i);
+        i++;
+    }
+}
+```
+
+# C files I/O : Create, Open, Read, Write & Close a file
+
+## `fopen` - Membuka file -> Read & Write
+
+`fopen` merupakan function yang didefinisikan di `<stdio.h>` Digunakan untuk membuka file
+
+### Syntax
+
+```c
+ptr = fopen("file", "mode");
+```
+
+## `fclose` - Menutup file
+
+`fclose` berfungsi untuk menutup sebuah file
+
+### syntax
+
+```c
+fclose(ptr);
+```
+
+> `ptr` merupakan pointer pada file yang akan ditutup
+
+## Reading & Writing
+
+Untuk melakukan perintah read & write kita gunakan `fprintf()` dan `fscanf()`. Perbedaan dengan `printf()` dan `scanf()` yaitu terletak `fprintf` dan `scanf()` membutuhkan pointer untuk mengakses file.
+
+### Write (w)
+
+```c
+int main() {
+    FILE* fptr;
+
+    fptr = fopen("hello.txt", "w");
+
+    fprintf(fptr, "hi");
+
+    return 0;
+}
+
+```
+
+> `fopen()` akan membuka file hello.txt dan `fprintf()` akan menambahkan/mengubah nilai yang ada di file hello.txt menjadi hi.
+
+### append (a)
+
+append digunakan untuk menambahkan data ke suatu file alih alih meng-_overwritenya_
+
+```c
+int main() {
+    FILE* fptr;
+
+    fptr = fopen("hello.txt", "a");
+
+    fprintf(fptr, "\nData 2\nData 3");
+
+    return 0;
+}
+```
+
+Anggap di file sebelumnya sudah ada Data 1, dengan file mode append (a), kita dapat menambahkan Data 2 dam Data 3 tanpa mengubah Data sebelumnya.
+
+### Wrtie to a text file
+
+```c
+int main() {
+    int num;
+    FILE *fptr;
+
+    fptr = fopen("hello.txt", "w");
+
+    if (fptr == NULL) {
+        printf("Error");
+        exit(1);
+    }
+
+    printf("Masukkan angka :\n");
+    scanf("%d", &num);
+
+    fprintf(fptr, "%d", num);
+    fclose(fptr);
+
+    return 0;
+}
+```
+
+Keterangan :
+
+1. Program diatas akan membuka file hello.txt yang kemudian compiler akan mengecheck jika `fptr` (pointer) tidak menemukan file hello.txt ( atau sama dengan NULL) maka tampilkan pesan error.
+2. Jika file ditemukan maka compiler akan meminta user memasukkan angka menggunaakn function `scanf()` yang nilainya di simpan di dalam variable `int num`.
+3. Kemudian untuk memasukkan inputan berupa angka tersebut (dari user) ke dalam file hello.txt maka kita perlu function `fprintf()`
+4. `fclose` untuk menutup file
+
+### Read from a text file
+
+```c
+int main() {
+
+    int num;
+    FILE *fptr;
+
+    if ((fptr = fopen("hello.txt", "r")) == NULL){
+        printf("Error");
+
+        exit(1);
+    }
+
+    fscanf(fptr, "%d", &num);
+
+    printf("Value of n = %d", num);
+    fclose(fptr);
+
+    return 0;
+}
+```
+
+Keterangan :
+
+1. Program diatas akan menampilkan input berupa angka yang sebelumnya dimasukkan oleh user
+2. `fscanf()` akan mengambil nilai dari fptr (hello.txt) dan mengisikan nilainya ke dalam variable `int num`
+3. Kemudian menampilkan hasilnya pada `printf()` dan menutup file `fptr` (hello.txt) menggunakan `fclose()`
