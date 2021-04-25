@@ -942,6 +942,34 @@ int main()
 }
 ```
 
+## Nested struct
+
+Nested `struct` adalah structure di dalam struct.
+
+```c
+int main(){
+    struct address {
+        int hno;
+        int pincode;
+    };
+    struct person {
+        char name[30];
+        int age;
+        struct address addr;
+    };
+
+    struct person joe = {age : 24, {34, 2132131}};
+    // joe.name = strcpy("John, 30");
+    // joe.age = 23;
+    // joe.addr.hno = 100;
+    // printf("%s\n", joe.name);
+    printf("%d\n", joe.age);
+    printf("%d\n", joe.addr.hno);
+    // printf("%d\n", joe.addr.hno);
+
+}
+```
+
 # looping 🔁
 
 ## While loop
@@ -1207,6 +1235,10 @@ int main()
 # Pointer ➡️
 
 Pointer pada dasarnya adalah tipe data sama seperti `int`, `char`, `float` dll yang **menyimpan lokasi memory dari variable lainya**. Jadi pointers ini menyimpan alamat memory yang di dalamat alamat memory tersebut terdapat nilai dari variable lainya. C akan mengaklokasikan 8 byte memory untuk menyimpan variable bertipe data pointer **terlepas** dari tipe data apa yang digunakan.
+
+## Mengapa butuh pointer?
+
+Karena program tidak bisa secara langsung mengakses
 
 ## Syntax
 
